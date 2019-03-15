@@ -8,12 +8,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name ="officers")
-public class Officer {
+public class Officer 
+{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String rank;
 	private String firstName;
+	private String lastName;
+	
+	//these are all references to other (or this) tables
+	private int superiorOfficerId;
+	private int locationId;
+	private int armyDivisionId;
 
 	public Officer()
 	{}
@@ -45,5 +52,37 @@ public class Officer {
 
 	public void setRank(String rank) {
 		this.rank = rank;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public int getSuperiorOfficerId() {
+		return superiorOfficerId;
+	}
+
+	public void setSuperiorOfficerId(int superiorOfficerId) {
+		this.superiorOfficerId = superiorOfficerId;
+	}
+
+	public int getLocationId() {
+		return locationId;
+	}
+
+	public void setLocationId(int locationId) {
+		this.locationId = locationId;
+	}
+
+	public int getArmyDivisionId() {
+		return armyDivisionId;
+	}
+
+	public void setArmyDivisionId(int armyDivisionId) {
+		this.armyDivisionId = armyDivisionId;
 	}
 }
