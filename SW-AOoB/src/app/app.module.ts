@@ -7,13 +7,15 @@ import { OfficersComponent } from './officers/officers.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OfficersComponent,
     HomepageComponent,
-    LoginComponent
+    LoginComponent,
+    ItemComponent
   ],
   imports: [
     FormsModule,

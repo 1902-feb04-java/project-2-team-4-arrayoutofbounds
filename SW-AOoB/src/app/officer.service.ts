@@ -12,7 +12,6 @@ export class OfficerService
   constructor(private http: HttpClient) { }
   officers = OFFICERS;
   private officerURL = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers';
-  // private api = 'https://swapi.co/api/planets';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
