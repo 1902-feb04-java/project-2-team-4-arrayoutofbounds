@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre" version="1.8.0_202">
+<bootpath>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\bin\compressedrefs\jclSC180\vm.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\se-service.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\rt.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\resources.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\jsse.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\charsets.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\jce.jar"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Users\Jake\scoop\apps\adopt8-openj9\current" version="1.8.0_202">
+<bootpath>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\bin\compressedrefs\jclSC180\vm.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\se-service.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\rt.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\resources.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\jsse.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\charsets.jar"/>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\jce.jar"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Users\Jake\scoop\apps\adopt8-openj9\current\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>
