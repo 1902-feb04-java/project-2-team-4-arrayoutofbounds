@@ -3,40 +3,32 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
-import { CatalogueComponent } from './catalogue/catalogue.component';
-
-import {MatTabsModule} from '@angular/material';
-
-=======
 import { OfficersComponent } from './officers/officers.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import {CatalogueComponent} from './catalogue/catalogue.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ItemComponent } from './item/item.component';
->>>>>>> dev
+import {MatTabsModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-    CatalogueComponent
-=======
     OfficersComponent,
     HomepageComponent,
     LoginComponent,
-    ItemComponent
->>>>>>> dev
+    ItemComponent,
+    CatalogueComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
-    MatTabsModule
-=======
-    HttpClientModule
->>>>>>> dev
+    HttpClientModule,
+    MatTabsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
