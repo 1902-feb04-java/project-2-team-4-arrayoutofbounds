@@ -1,0 +1,23 @@
+<h2>Imperial Officers</h2>
+<ul>
+  <li *ngFor="let officer of officers">
+    <span>{{officer.firstName}}</span> {{officer.rank}}
+  </li>
+</ul>
+  {{currentOfficer.firstName +": "+ currentOfficer.rank}}
+    <!-- <a routerLink ="/detail/{{hero.id}}"> -->
+    
+    <!-- </a> -->
+    <!-- <button class="delete" title="delete hero"
+      (click)="delete(hero)">x</button> -->
+
+<!-- <div>
+  <label>
+    
+    First Name: <input #heroName />
+  </label>
+    (click) passes input value to add() and then clears the input
+    <button (click)="add(heroName.value); heroName.value=''">
+        add
+      </button>
+</div> -->
