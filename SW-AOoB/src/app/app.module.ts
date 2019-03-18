@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { OfficersComponent } from './officers/officers.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InventoriesComponent } from './inventories/inventories.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OfficersComponent,
-    HomepageComponent
+    HomepageComponent,
+    InventoriesComponent
   ],
   imports: [
     BrowserModule,
