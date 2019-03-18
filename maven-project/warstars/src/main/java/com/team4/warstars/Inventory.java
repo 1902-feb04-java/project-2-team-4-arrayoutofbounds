@@ -2,6 +2,9 @@ package com.team4.warstars;
 
 import java.util.Arrays;
 
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -89,5 +92,4 @@ public class Inventory {
 	public void setAmmunition(int ammunition) {
 		this.ammunition = ammunition;
 	}
-
 }

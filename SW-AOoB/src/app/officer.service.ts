@@ -12,7 +12,6 @@ export class OfficerService
   constructor(private http: HttpClient) { }
   officers = OFFICERS;
   private officerURL = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers';
-  // private api = 'https://swapi.co/api/planets';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -21,11 +20,18 @@ export class OfficerService
     const url = `${this.officerURL}/${id}`;
     return this.http.get<Officer>(url);
   }
-  // getOfficer(id:number): Observable<Object>{
-  //   const url = `${this.officerURL}/${id}`;
-  //   return this.http.get(url);
-  // }
-  getOfficers(): Observable<Officer[]>{
-    return of(OFFICERS);
+
+  getOfficers(rank:string): Observable<any>{
+    const url = `${this.officerURL}/search/findByRank?rank=${rank}`;
+    return this.http.get<any>(url);
   }
+
+  addOfficer(officer:Object): Observable<any>{
+    return this.http.post<any>(this.officerURL, officer, this.httpOptions);
+  }
+  
+  // getOfficers(): Observable<Officer[]>{
+  //   return of(OFFICERS);
+  // }
+  
 }
