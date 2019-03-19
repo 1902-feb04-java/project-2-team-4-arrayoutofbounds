@@ -14,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "inventories")
 public class Inventory {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -22,13 +23,6 @@ public class Inventory {
 	private String vehicles[];
 	private String weapons[];
 	private int ammunition;
-
-	@Override
-	public String toString() {
-		return "Inventory [id=" + id + ", location_id=" + location_id + ", personal=" + Arrays.toString(personal)
-				+ ", vehicles=" + Arrays.toString(vehicles) + ", weapons=" + Arrays.toString(weapons) + ", ammunition="
-				+ ammunition + "]";
-	}
 
 	public Inventory() {
 		super();

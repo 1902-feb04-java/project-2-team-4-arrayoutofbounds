@@ -1,3 +1,6 @@
-<p>
-  inventories works!
-</p>
+<h3>Inventory</h3>
+<ui>
+  <li *ngFor="let inventory of inventories">
+    <span>{{inventory.id}} + {{inventory.ammunition}}</span>
+  </li>
+</ui>
