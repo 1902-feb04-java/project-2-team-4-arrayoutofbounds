@@ -23,7 +23,7 @@ export class CatalogueComponent {
 
 
   displayedColumns: string[]=['name', 'model', 'cost'];
-  dataSource = Weapon_data;
+  weaponSource = Weapon_data;
 
 }
 
