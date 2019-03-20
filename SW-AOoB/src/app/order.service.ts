@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { Observable, of, pipe } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Order } from './order';
@@ -111,3 +112,25 @@ import { MessageService } from './message.service';
     };
   }
   }
+=======
+import { Order } from './Order';
+import { Item } from './item';
+import { Observable, of, Subscription } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class OrderService 
+{
+  constructor() {}
+
+  currentOrder:Order;
+  orders:Order[];
+  update = new Subscription();
+  
+  addItem(item:Item): Observable<Order>{
+    this.currentOrder.itemsOrdered.push(item)
+    return of(this.currentOrder)
+  }
+}
+>>>>>>> dev

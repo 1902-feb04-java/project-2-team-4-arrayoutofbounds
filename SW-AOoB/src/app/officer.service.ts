@@ -10,7 +10,7 @@ import {OFFICERS} from './mock-officers';
 export class OfficerService
 {
   constructor(private http: HttpClient) { }
-  officers = OFFICERS;
+  // officers = OFFICERS;
   private officerURL = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
