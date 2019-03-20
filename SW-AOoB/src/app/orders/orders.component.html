@@ -1,0 +1,64 @@
+
+<h4>Order History</h4>
+<!--Order History Table-->
+<mat-table #table [dataSource]="dataSource" class="mat-elevation-z10">
+
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns;"
+          (click)="selection.toggle(row)">
+</mat-row>
+
+<!--Checkbox column-->
+<ng-container matColumnDef="select">
+  <mat-header-cell *matHeaderCellDef> 
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+  </mat-header-cell >
+  <mat-cell *matCellDef="let row">
+    <mat-checkbox (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)"
+                  [aria-label]="checkboxLabel(row)">
+
+    </mat-checkbox>
+  </mat-cell>
+</ng-container>
+
+
+
+<!--ID column-->
+<ng-container matColumnDef="id">
+  <mat-header-cell *matHeaderCellDef>Order No.</mat-header-cell>
+  <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+</ng-container>
+
+<!--First Name column-->
+<ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.firstName}}</mat-cell>
+</ng-container>
+
+<!--Last Name column-->
+<ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.lastName}}</mat-cell>
+</ng-container>
+
+<!--Officer Id column-->
+<ng-container matColumnDef="officerId">
+    <mat-header-cell *matHeaderCellDef>Officer No.</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.officerId}}</mat-cell>
+</ng-container>
+
+ <!--Location column-->
+<ng-container matColumnDef="location">
+    <mat-header-cell *matHeaderCellDef>Planet</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.location}}</mat-cell>
+  </ng-container>
+            
+
+
+</mat-table>
