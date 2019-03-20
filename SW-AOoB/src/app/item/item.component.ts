@@ -27,7 +27,7 @@ export class ItemComponent implements OnInit {
     })
   }
 
-  @Output() addRequest:EventEmitter<any>= new EventEmitter();
+  // @Output() addRequest:EventEmitter<any>= new EventEmitter();
   addItem(): void{
 
   }
