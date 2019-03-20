@@ -8,6 +8,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ItemComponent } from './item/item.component';
+import { OrderComponent } from './order/order.component';
+import { CatalogueComponent } from './catalogue/catalogue.component';
+import { OrderService } from './order.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,9 @@ import { ItemComponent } from './item/item.component';
     OfficersComponent,
     HomepageComponent,
     LoginComponent,
-    ItemComponent
+    ItemComponent,
+    OrderComponent,
+    CatalogueComponent
   ],
   imports: [
     FormsModule,
@@ -23,7 +28,9 @@ import { ItemComponent } from './item/item.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    OrderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

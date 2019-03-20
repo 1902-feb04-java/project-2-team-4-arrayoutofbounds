@@ -63,8 +63,8 @@ function protoShip(obj){
 pull(vehicleURL, protoVehicle)
 pull(starshipURL, protoShip)
 
-let loc = {id: 1, membershipGroup: 1, name:"Nebula"};
-let off = {firstName:"BoB", rank:"Sarge"}
+// let loc = {id: 1, membershipGroup: 1, name:"Nebula"};
+// let off = {firstName:"BoB", rank:"Sarge"}
 // push(itemsRDS,loc);
 
 
