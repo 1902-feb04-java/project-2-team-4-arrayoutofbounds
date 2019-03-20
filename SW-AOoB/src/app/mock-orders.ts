@@ -12,5 +12,5 @@ const ORDER_DATA: Order[] = [
 
 
 export class OrderTable{
-    displayedColumns: string[] = ['id', 'firstName', 'lastName', 'officerId', 'location']
+    displayedColumns: string[] = ['select', 'id', 'firstName', 'lastName', 'officerId', 'location']
 }
