@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { Observable, of, pipe } from 'rxjs';
+import { Observable, of, pipe, Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Order } from './order';
+import { Order } from './Order';
 import { catchError, map, tap} from 'rxjs/operators';
 import { error } from 'protractor';
 import { errorHandler } from '@angular/platform-browser/src/browser';
 import { MessageService } from './message.service';
+import { Item } from './item';
 
 
 @Injectable({
@@ -14,18 +14,29 @@ import { MessageService } from './message.service';
   })
 
   export class OrderService{
-      constructor(
-          private http: HttpClient,
-          private messageService: MessageService){}
 
-      private log(message:string){
-          this.messageService.add(`OrderService: ${message}`);
+    currentOrder:Order;
+    orders:Order[];
+    update = new Subscription();
+      
+    constructor(
+        private http: HttpClient,
+        private messageService: MessageService){}
+
+    private log(message:string){
+        this.messageService.add(`OrderService: ${message}`);
+    }
+
+    private orderURL = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/orders';
+    httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    //Brandon's method to items to order
+    addItem(item:Item): Observable<Order>{
+        this.currentOrder.itemsOrdered.push(item)
+        return of(this.currentOrder)
       }
-
-      private orderURL = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/orders';
-      httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-      };
     
     //Get All Orders 
     getOrders(): Observable<Order[]>{
@@ -112,25 +123,4 @@ import { MessageService } from './message.service';
     };
   }
   }
-=======
-import { Order } from './Order';
-import { Item } from './item';
-import { Observable, of, Subscription } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class OrderService 
-{
-  constructor() {}
-
-  currentOrder:Order;
-  orders:Order[];
-  update = new Subscription();
-  
-  addItem(item:Item): Observable<Order>{
-    this.currentOrder.itemsOrdered.push(item)
-    return of(this.currentOrder)
-  }
-}
->>>>>>> dev
