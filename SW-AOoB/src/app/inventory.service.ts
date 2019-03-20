@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
-import { HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of} from 'rxjs';
 import { INVENTORIES } from './mock-inventories';
 import { Inventories } from './Inventories';
 
@@ -17,12 +16,16 @@ export class InventoryService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  getInventories(id:number): Observable<Inventories>{
-    const url = `${this.invUrl}/${id}`;
-    return this.http.get<Inventories>(url);
-  }
-  getInventory(location_id:number): Observable<any>{
-    const url = `${this.invUrl}/search/findbyLocation?location_id=${location_id}`;
-    return this.http.get<any>(url);
+  // getInventories(locationId:string): Observable<any>{
+  //   const url = `${this.invUrl}/search/findByLocation_id?category=${locationId}`;
+  //   return this.http.get<any>(url);
+  // }
+  // getInventory(location_id:number): Observable<any>{
+  //   const url = `${this.invUrl}/search/findbyLocation?location_id=${location_id}`;
+  //   return this.http.get<any>(url);
+  // }
+
+  getInventories(): Observable<Inventories[]>{
+    return of(INVENTORIES);
   }
 }

@@ -1,10 +1,6 @@
 package com.team4.warstars;
 
-import java.util.Arrays;
-
-import java.util.List;
-
-import javax.persistence.ElementCollection;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,25 +14,13 @@ public class Inventory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String location_id;
-	private String personal[];
-	private String vehicles[];
-	private String weapons[];
-	private int ammunition;
+	private int locationId;
+	//private String personnel[];
+	@Column(length=1024)
+	private String items;
 
 	public Inventory() {
 		super();
-	}
-
-	public Inventory(long id, String location_id, String[] personal, String[] vehicles, String[] weapons,
-			int ammunition) {
-		super();
-		this.id = id;
-		this.location_id = location_id;
-		this.personal = personal;
-		this.vehicles = vehicles;
-		this.weapons = weapons;
-		this.ammunition = ammunition;
 	}
 
 	public long getId() {
@@ -47,43 +31,27 @@ public class Inventory {
 		this.id = id;
 	}
 
-	public String getLocation_id() {
-		return location_id;
+	public int getLocationId() {
+		return locationId;
 	}
 
-	public void setLocation_id(String location_id) {
-		this.location_id = location_id;
+	public void setLocationId(int locationId) {
+		this.locationId = locationId;
 	}
 
-	public String[] getPersonal() {
-		return personal;
+	public String getItems() {
+		return items;
 	}
 
-	public void setPersonal(String[] personal) {
-		this.personal = personal;
+	public void setItems(String items) {
+		this.items = items;
 	}
 
-	public String[] getVehicles() {
-		return vehicles;
+	public Inventory(long id, int locationId, String items) {
+		super();
+		this.id = id;
+		this.locationId = locationId;
+		this.items = items;
 	}
-
-	public void setVehicles(String[] vehicles) {
-		this.vehicles = vehicles;
-	}
-
-	public String[] getWeapons() {
-		return weapons;
-	}
-
-	public void setWeapons(String[] weapons) {
-		this.weapons = weapons;
-	}
-
-	public int getAmmunition() {
-		return ammunition;
-	}
-
-	public void setAmmunition(int ammunition) {
-		this.ammunition = ammunition;
-	}
+	
 }

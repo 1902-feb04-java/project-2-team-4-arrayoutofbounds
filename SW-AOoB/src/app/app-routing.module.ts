@@ -5,15 +5,15 @@ import {OfficersComponent} from './officers/officers.component';
 import{LoginComponent} from './login/login.component'
 import { ItemComponent } from './item/item.component';
 import {CatalogueComponent} from './catalogue/catalogue.component';
-
+import { InventoriesComponent } from './inventories/inventories.component';
 const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'home', component: HomepageComponent},
   {path:'officers', component: OfficersComponent},
   {path:'items', component: ItemComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full' },
-  {path:'catalogue', component: CatalogueComponent}
-  // {path:'inventory', component: InventoryComponent},
+  {path:'catalogue', component: CatalogueComponent},
+  {path:'inventories', component: InventoriesComponent}
   // {path:'history', component: HistoryComponent},
   // {path:'locations', component: LocationsComponent},
 ];

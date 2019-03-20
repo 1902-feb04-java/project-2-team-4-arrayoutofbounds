@@ -1,6 +1,6 @@
 <h3>Inventory</h3>
-<ui>
+<ul>
   <li *ngFor="let inventory of inventories">
-    <span>{{inventory.id}} + {{inventory.ammunition}}</span>
+    <span>{{inventory.items.category}}</span>
   </li>
-</ui>
+</ul>
