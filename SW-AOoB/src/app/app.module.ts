@@ -13,14 +13,10 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { OrderService } from './order.service';
 import {MatTabsModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-<<<<<<< HEAD
 import {MatTableModule} from '@angular/material/table';
-=======
 import { OrdersComponent } from './orders/orders.component';
-import { MatTableModule } from '@angular/material/table';
 import {MatCheckboxModule } from '@angular/material';
 
->>>>>>> dev
 
 
 @NgModule({
@@ -43,12 +39,9 @@ import {MatCheckboxModule } from '@angular/material';
     MatTabsModule,
     BrowserAnimationsModule,
     MatTableModule
-<<<<<<< HEAD
-=======
   ],
   providers: [
     OrderService
->>>>>>> dev
   ],
   bootstrap: [AppComponent]
 })

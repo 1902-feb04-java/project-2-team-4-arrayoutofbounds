@@ -6,11 +6,11 @@ import { MatTableDataSource } from '@angular/material';
 
 
 const ORDER_DATA: Order[] = [
-  {id: 1, firstName: 'Ken', lastName: 'Sparks', officerId: 1000, location: 'Tatooine' },
-  {id: 2, firstName: 'Yoda', lastName: 'Boss', officerId: 1001, location: 'Dagobah' },
-  {id: 3, firstName: 'Luke', lastName: 'Skywalker', officerId: 1002, location: 'Bespin' },
-  {id: 4, firstName: 'Han', lastName: 'Solo', officerId: 1003, location: 'Yavin' },
-  {id: 5, firstName: 'Boosie', lastName: 'Badazz', officerId: 1004, location: 'Hoth' },
+//   {id: 1, officerId: 1000, location: 'Tatooine' },
+//   {id: 2, firstName: 'Yoda', lastName: 'Boss', officerId: 1001, location: 'Dagobah' },
+//   {id: 3, firstName: 'Luke', lastName: 'Skywalker', officerId: 1002, location: 'Bespin' },
+//   {id: 4, firstName: 'Han', lastName: 'Solo', officerId: 1003, location: 'Yavin' },
+//   {id: 5, firstName: 'Boosie', lastName: 'Badazz', officerId: 1004, location: 'Hoth' },
 ]; 
 
 // const initialSelection = [];
@@ -47,7 +47,7 @@ export class OrdersComponent {
     if(!row){
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.firstName + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
   constructor() { }
