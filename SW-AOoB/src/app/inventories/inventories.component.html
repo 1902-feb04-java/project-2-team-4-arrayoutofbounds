@@ -1,6 +1,7 @@
 <h3>Inventory</h3>
+<span>Mock inventory(before table change)</span>
 <ul>
   <li *ngFor="let inventory of inventories">
-    <span>{{inventory.items.category}}</span>
+    <span>[id: {{inventory.id}}, ammo: {{inventory.ammunition}}, location id: {{inventory.location_id}}, personal: {{inventory.personal}}, vehicles: {{inventory.vehicles}}, weapons: {{inventory.weapons}}]</span>
   </li>
 </ul>
