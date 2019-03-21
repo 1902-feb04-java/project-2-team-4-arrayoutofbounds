@@ -6,6 +6,7 @@ import{LoginComponent} from './login/login.component'
 import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
 import {CatalogueComponent} from './catalogue/catalogue.component';
+import { InventoriesComponent } from './inventories/inventories.component';
 import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path:'order', component: OrderComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full' },
   {path:'catalogue', component: CatalogueComponent},
+  {path:'inventories', component: InventoriesComponent},
+  // {path:'history', component: HistoryComponent},
   // {path:'inventory', component: InventoryComponent},
   {path:'orders', component: OrdersComponent},
   // {path:'locations', component: LocationsComponent},

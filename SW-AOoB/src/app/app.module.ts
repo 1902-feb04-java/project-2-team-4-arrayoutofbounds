@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { OfficersComponent } from './officers/officers.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InventoriesComponent } from './inventories/inventories.component';
 import { LoginComponent } from './login/login.component';
 import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
@@ -24,6 +25,7 @@ import {MatCheckboxModule } from '@angular/material';
     AppComponent,
     OfficersComponent,
     HomepageComponent,
+    InventoriesComponent,
     LoginComponent,
     ItemComponent,
     OrderComponent,
