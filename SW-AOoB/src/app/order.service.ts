@@ -28,15 +28,16 @@ import { Item } from './item';
     }
 
     private orderURL = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/orders';
+    private localOrdersURL = 'http://localhost:5000/orders';
     httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    //Brandon's method to items to order
-    addItem(item:Item): Observable<Order>{
-        this.currentOrder.itemsOrdered.push(item)
-        return of(this.currentOrder)
-      }
+    // //Brandon's method to items to order
+    // addItem(item:Item): Observable<Order>{
+    //     this.currentOrder.itemsOrdered.push(item)
+    //     return of(this.currentOrder)
+    //   }
     
     //Get All Orders 
     getOrders(): Observable<Order[]>{
@@ -58,7 +59,7 @@ import { Item } from './item';
     }
 
     //POST: add a new hero to the server 
-    addOrder(order:Order): Observable<Order>{
+    addOrder(order:any): Observable<Order>{
         return this.http.post<Order>(this.orderURL, order, this.httpOptions)
         .pipe(
             tap((neworder: Order) => this.log(`Added Order #${order.id}`)),

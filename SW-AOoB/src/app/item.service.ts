@@ -16,14 +16,14 @@ export class ItemService {
   };
 
   getItems(): Observable<any>{
-    return this.http.get<any>(this.localItemsURL)
+    return this.http.get<any>(this.itemsURL)
   }
 
   getItem(id:number): Observable<Item>{
-    const url = `${this.localItemsURL}/search/findByItemId?itemId=${id}`;
+    const url = `${this.itemsURL}/search/findByItemId?itemId=${id}`;
     return this.http.get<Item>(url);
   }
   addItem(item:Item): Observable<Item>{
-    return this.http.post<any>(this.localItemsURL, item, this.httpOptions);
+    return this.http.post<any>(this.itemsURL, item, this.httpOptions);
   }
 }

@@ -3,6 +3,7 @@ import { Order } from '../Order';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { OrderService } from '../order.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-order',
@@ -14,18 +15,16 @@ export class OrderComponent implements OnInit {
   { }
   ngOnInit() 
   {
-    this.currentOrder = new Order(1, 2, new Map<number, number>());
-    this.addItem({'itemId':1, 'qty':1});
+    this.orderNumber = 0;
+    this.newOrder();
+
+    // this.addItem({'itemId':1, 'qty':1});
     this.orderService.update.subscribe((obj =>{
       this.addItem(obj);
       console.log(obj)
-      // if(!this.currentOrder.items.has(obj.itemId))
-      // {
-        // this.currentOrder.items.set(obj.itemId, obj.qty)
-      // }
     }))
   }
-  @Input()
+  orderNumber:number;
   currentOrder:Order 
  
   addItem(item:any):void{
@@ -48,9 +47,22 @@ export class OrderComponent implements OnInit {
  
   getCost():number{
     let cost = 0;
-    this.currentOrder.itemsOrdered.forEach((e) => {
-      cost += e.cost;
-    })
+    if(this.currentOrder.itemsOrdered)
+    {
+      this.currentOrder.itemsOrdered.forEach((e) => {
+        cost += e.cost;
+      })
+    }
     return cost
+  }
+  newOrder(): void{
+    this.currentOrder = new Order(this.orderNumber++, 1, new Map<number, number>());
+  }
+  submitOrder(): void{
+    let slimOrder = {orderId: this.currentOrder.orderId, userId: 1, cost: this.getCost(), itemsOrdered: JSON.stringify(this.getItems())}
+    this.orderService.addOrder(slimOrder).subscribe(() => {
+      console.log('Order Submitted')
+      this.newOrder();
+    })
   }
 }
