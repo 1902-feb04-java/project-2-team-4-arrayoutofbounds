@@ -25,11 +25,11 @@ let ORDER_DATA: Order[] = [
 // this.selection = new SelectionModel<Order>(allowMultiSelect, initialSelection);
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css']
+  selector: 'app-OrderHistory',
+  templateUrl: './OrderHistory.component.html',
+  styleUrls: ['./OrderHistory.component.css']
 })
-export class OrdersComponent {
+export class OrderHistoryComponent {
 
   displayedColumns: string[] = ['select','id', 'user', 'itemsOrdered', 'isAuthorized', 'date', 'cost'];
   dataSource = new MatTableDataSource<Order>(ORDER_DATA);
