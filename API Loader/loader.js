@@ -20,10 +20,9 @@ function pull(url, func){
         	var data = JSON.parse(xhr.response);
         	//console.log(data);
 
-        	for(let i = 0; i< data.results.length-1; i++)//let item of data.results
+        	for(let item of data.results)//let item of data.results
         	{
-                let item = data.results[i];
-                let newItem = func(count++,item);
+                let newItem = func(item);
                 console.log(newItem)
                 push(itemsRDS, newItem)
         	}
@@ -48,24 +47,46 @@ function push(url, obj){
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(obj));
 }
-        	
+
     // private long id;
+    // private long itemId
     // private String category;
     // private String classification;
     // private String model;
     // private int cost;
-function protoVehicle(id,obj){
+function createItem(cat, cla, mod, cost)
+{
+    return {itemId:count++, category:cat, classification: cla, model: mod, cost: cost}
+}   	
+
+function protoVehicle(obj){
     let cost = obj.cost_in_credits =="unknown"? 10500: obj.cost_in_credits;
-    return {itemId:id, category:"Vehicle", classification: obj.vehicle_class, model: obj.model, cost: cost}
+    return {itemId:count++, category:"Vehicle", classification: obj.vehicle_class, model: obj.model, cost: cost}
 }
-function protoShip(id, obj){
+
+function protoShip(obj){
     let cost = obj.cost_in_credits =="unknown"? 420000: obj.cost_in_credits;
-    return {itemId:id, category:"Starships", classification: obj.starship_class, model: obj.model, cost: cost}
+    return {itemId:count++, category:"Starships", classification: obj.starship_class, model: obj.model, cost: cost}
 }
 
 pull(vehicleURL, protoVehicle)
 pull(starshipURL, protoShip)
 
+let items = [
+createItem('Supplies','Food', 'Flour', 20),
+createItem('Supplies','Ammo', 'Laserbeams', 65),
+createItem('Supplies','Fuel', 'S-Class Lithium-Ion Battery', 5000),
+createItem('Supplies','Fuel', 'High Grade Hydrogen', 20),
+createItem('Supplies','Food', 'Maramaduke Eggs', 15),
+createItem('Supplies','Ammo', '155mm Shells', 20),
+createItem('Weapons','Blaster Rifle', 'AFK 88', 850),
+createItem('Weapons','Artillery', '155mm Wurlitzer', 850),
+createItem('Weapons','Blaster Pistol', '76 Hoth Special', 430),
+createItem('Weapons','Blaster Rifle', 'FTW-Ghost', 850)
+]
+items.forEach((e) => {
+    push(itemsRDS, e)
+})
 // let loc = {id: 1, membershipGroup: 1, name:"Nebula"};
 // let off = {firstName:"BoB", rank:"Sarge"}
 // push(itemsRDS,loc);
