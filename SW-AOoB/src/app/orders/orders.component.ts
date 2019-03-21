@@ -4,9 +4,10 @@ import { DataSource } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material';
 import { Item } from '../Item'
+import { OrderService } from '../order.service';
 
 
-const ORDER_DATA: Order[] = [
+let ORDER_DATA: Order[] = [
 //   {id: 1,  user: 1000, itemsOrdered: [{ id: 1, category: "Weapon", classification:"", model:"x", cost:50 }],
 //     isAuthorized: true, date:null, cost:100 },
 //   {id: 2,  user: 1001, itemsOrdered: [{ id: 2, category: "Weapon", classification:"", model:"y", cost:200 }],
@@ -56,10 +57,23 @@ export class OrdersComponent {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.user + 1}`;
   }
 
-  constructor() { }
+  constructor(private orderService:OrderService) { }
 
   ngOnInit() {
+    this.orderService.getOrders().subscribe((orders) =>{
+      ORDER_DATA = orders._embedded.orders;
+      this.parseData();
+      console.log(ORDER_DATA)
+      this.dataSource = new MatTableDataSource<Order>(ORDER_DATA);
+    })
   }
+  parseData():void{
+    let items;
+    ORDER_DATA.forEach(od =>{
+      items = JSON.parse(od.itemsOrdered as unknown as string)
+      od.itemsOrdered = items;
+    })
 
+  }
 }
 

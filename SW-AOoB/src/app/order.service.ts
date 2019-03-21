@@ -40,11 +40,11 @@ import { Item } from './item';
     //   }
     
     //Get All Orders 
-    getOrders(): Observable<Order[]>{
-        return this.http.get<Order[]>(this.orderURL)
+    getOrders(): Observable<any>{
+        return this.http.get<any>(this.orderURL)
         .pipe(
             tap(_ => this.log(`Fetched orders`)),
-            catchError(this.handleError<Order[]>(`getOrders`,[]))
+            catchError(this.handleError<Order[]>(`getOrders`,[])),
         )
     }
 
