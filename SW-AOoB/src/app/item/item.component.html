@@ -2,10 +2,12 @@
   item works!
 </p>
 <ul>
+  <div *ngIf = items>
   <li *ngFor="let item of items">
-    <span>{{item.classification}}</span> {{item.model}}
-    <button >+</button>
+    <span>{{item.classification}}</span> - {{item.model}}
+    <button (click) ="addItem(item.itemId,1)">+</button>
   </li>
+</div>
 </ul>
 
-<app-order>[] = </app-order>
+<app-order> </app-order>

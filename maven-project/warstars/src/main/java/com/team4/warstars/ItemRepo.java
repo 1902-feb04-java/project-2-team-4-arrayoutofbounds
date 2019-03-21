@@ -12,4 +12,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public interface ItemRepo extends CrudRepository<Item, Long>
 {
 	List<Item> findByCategory(@Param("category")String r); //url search?key=value
+
+//	@Query(value ="select * from items")
+	Item findByItemId(@Param("itemId")long id);
+
 }

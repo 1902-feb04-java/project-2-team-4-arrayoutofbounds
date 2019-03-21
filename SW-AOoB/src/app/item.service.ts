@@ -9,6 +9,8 @@ export class ItemService {
 
   constructor(private http: HttpClient) { }
   private itemsURL = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/items';
+  private localItemsURL = 'http://localhost:5000/items';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -18,7 +20,7 @@ export class ItemService {
   }
 
   getItem(id:number): Observable<Item>{
-    const url = `${this.itemsURL}/${id}`;
+    const url = `${this.itemsURL}/search/findByItemId?itemId=${id}`;
     return this.http.get<Item>(url);
   }
   getItemType(type:string):Observable<Item>{

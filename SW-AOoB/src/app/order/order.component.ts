@@ -3,6 +3,7 @@ import { Order } from '../Order';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { OrderService } from '../order.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-order',
@@ -14,33 +15,54 @@ export class OrderComponent implements OnInit {
   { }
   ngOnInit() 
   {
-    // this.currentOrder  = new Order();
-    // this.currentOrder.cost = 42;
-    // this.currentOrder.id = 1;
-    // this.currentOrder.isAuthorized = true;
-    // this.currentOrder.user = 1;
-    // // this.currentOrder.itemsOrdered =;
-    // this.currentOrder.itemsOrdered = [];
-    // this.itemService.getItem(35).subscribe(item => {
-    //   this.addItem(item);
-    //   console.log(item);
-    // });
+    this.orderNumber = 0;
+    this.newOrder();
+
+    // this.addItem({'itemId':1, 'qty':1});
+    this.orderService.update.subscribe((obj =>{
+      this.addItem(obj);
+      console.log(obj)
+    }))
   }
-  @Input()
-  currentOrder: Order;
-  // this.orderService
-  // addItem(item:Item):void{
-  //   this.currentOrder.itemsOrdered.push(item);
-  // }
-  getOrder():void{
-    
+  orderNumber:number;
+  currentOrder:Order 
+ 
+  addItem(item:any):void{
+    this.currentOrder.items.set(item.itemId, item.qty)
+    this.currentOrder.itemsOrdered = this.getItems();
+  }
+  getItems():Item[]{
+    let items:Item[] = [];
+    this.currentOrder.items.forEach((v,k,m)=>{
+      if(v>0)
+      {
+        this.itemService.getItem(k).subscribe((item) => {
+          items.push(item);
+        })
+      }
+    })
+    console.log(items)
+    return items;
   }
  
   getCost():number{
     let cost = 0;
-    this.currentOrder.itemsOrdered.forEach((e) => {
-      cost += e.cost;
-    })
+    if(this.currentOrder.itemsOrdered)
+    {
+      this.currentOrder.itemsOrdered.forEach((e) => {
+        cost += e.cost;
+      })
+    }
     return cost
+  }
+  newOrder(): void{
+    this.currentOrder = new Order(this.orderNumber++, 1, new Map<number, number>());
+  }
+  submitOrder(): void{
+    let slimOrder = {orderId: this.currentOrder.orderId, userId: 1, cost: this.getCost(), itemsOrdered: JSON.stringify(this.getItems())}
+    this.orderService.addOrder(slimOrder).subscribe(() => {
+      console.log('Order Submitted')
+      this.newOrder();
+    })
   }
 }

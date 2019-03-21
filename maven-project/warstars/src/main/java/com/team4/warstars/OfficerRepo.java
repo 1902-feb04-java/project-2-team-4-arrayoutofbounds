@@ -13,4 +13,6 @@ public interface OfficerRepo extends CrudRepository<Officer, Long>
 {
 //	List<Reimbursement> findByDescription(@Param("desc")String description);
 	List<Officer> findByRank(@Param("rank")String r); //url search?key=value
+	
+//	void save();
 }

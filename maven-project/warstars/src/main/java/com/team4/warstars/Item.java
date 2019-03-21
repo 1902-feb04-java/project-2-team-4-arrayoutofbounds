@@ -13,6 +13,7 @@ public class Item
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	private long itemId;
 	private String category;
 	private String classification;
 	private String model;
@@ -21,12 +22,22 @@ public class Item
 	public Item()
 	{}
 	
+	public long getItemId() {
+		return itemId;
+	}
+
+	public void setItemId() {
+		this.itemId = id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getCategory() {
 		return category;
 	}

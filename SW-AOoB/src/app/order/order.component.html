@@ -8,10 +8,10 @@
 </div>
 <div>
     <label>Order Authorized: </label>
-    {{currentOrder.isAuthorized }}  
+    <!-- {{currentOrder.isAuthorized }}   -->
 </div>
 
-<div>
+<div *ngIf="getCost()">
   <h3>Items: </h3>
     <ul>
         <li *ngFor="let item of currentOrder.itemsOrdered">
@@ -23,4 +23,5 @@
     <label>Total: </label>
     {{[getCost()]}} 
 </div>
+<button (click) = "submitOrder()" >Submit</button>
 
