@@ -58,6 +58,7 @@ export class OrderComponent implements OnInit {
   newOrder(): void{
     this.currentOrder = new Order(this.orderNumber++, 1, new Map<number, number>());
   }
+  
   submitOrder(): void{
     let slimOrder = {orderId: this.currentOrder.orderId, userId: 1, cost: this.getCost(), itemsOrdered: JSON.stringify(this.getItems())}
     this.orderService.addOrder(slimOrder).subscribe(() => {
