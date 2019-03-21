@@ -14,26 +14,36 @@ export class OrderComponent implements OnInit {
   { }
   ngOnInit() 
   {
-    // this.currentOrder  = new Order();
-    // this.currentOrder.cost = 42;
-    // this.currentOrder.id = 1;
-    // this.currentOrder.isAuthorized = true;
-    // this.currentOrder.user = 1;
-    // // this.currentOrder.itemsOrdered =;
-    // this.currentOrder.itemsOrdered = [];
-    // this.itemService.getItem(35).subscribe(item => {
-    //   this.addItem(item);
-    //   console.log(item);
-    // });
+    this.currentOrder = new Order(1, 2, new Map<number, number>());
+    this.addItem({'itemId':1, 'qty':1});
+    this.orderService.update.subscribe((obj =>{
+      this.addItem(obj);
+      console.log(obj)
+      // if(!this.currentOrder.items.has(obj.itemId))
+      // {
+        // this.currentOrder.items.set(obj.itemId, obj.qty)
+      // }
+    }))
   }
   @Input()
-  currentOrder: Order;
-  // this.orderService
-  // addItem(item:Item):void{
-  //   this.currentOrder.itemsOrdered.push(item);
-  // }
-  getOrder():void{
-    
+  currentOrder:Order 
+ 
+  addItem(item:any):void{
+    this.currentOrder.items.set(item.itemId, item.qty)
+    this.currentOrder.itemsOrdered = this.getItems();
+  }
+  getItems():Item[]{
+    let items:Item[] = [];
+    this.currentOrder.items.forEach((v,k,m)=>{
+      if(v>0)
+      {
+        this.itemService.getItem(k).subscribe((item) => {
+          items.push(item);
+        })
+      }
+    })
+    console.log(items)
+    return items;
   }
  
   getCost():number{

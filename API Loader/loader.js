@@ -5,10 +5,12 @@ const starshipURL = 'starships';
 const planetURL = 'planets';
 //push variables
 const baseRDS = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/';
+const localRDS = 'http://localhost:5000/'
 const locationsRDS = 'locations'
 const itemsRDS = 'items'
 const officerRDS = 'officers'
 
+let count = 0;
 function pull(url, func){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = ()=> 
@@ -16,11 +18,12 @@ function pull(url, func){
         if (xhr.readyState == 4) 
         {
         	var data = JSON.parse(xhr.response);
-        	console.log(data);
+        	//console.log(data);
 
-        	for(let item of data.results)
+        	for(let i = 0; i< data.results.length-1; i++)//let item of data.results
         	{
-                let newItem = func(item);
+                let item = data.results[i];
+                let newItem = func(count++,item);
                 console.log(newItem)
                 push(itemsRDS, newItem)
         	}
@@ -41,7 +44,7 @@ function push(url, obj){
         	console.log(data);
         }
     };
-    xhr.open('POST',baseRDS+url, true);
+    xhr.open('POST',localRDS+url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(obj));
 }
@@ -51,13 +54,13 @@ function push(url, obj){
     // private String classification;
     // private String model;
     // private int cost;
-function protoVehicle(obj){
+function protoVehicle(id,obj){
     let cost = obj.cost_in_credits =="unknown"? 10500: obj.cost_in_credits;
-    return {category:"Vehicle", classification: obj.vehicle_class, model: obj.model, cost: cost}
+    return {itemId:id, category:"Vehicle", classification: obj.vehicle_class, model: obj.model, cost: cost}
 }
-function protoShip(obj){
+function protoShip(id, obj){
     let cost = obj.cost_in_credits =="unknown"? 420000: obj.cost_in_credits;
-    return {category:"Starships", classification: obj.starship_class, model: obj.model, cost: cost}
+    return {itemId:id, category:"Starships", classification: obj.starship_class, model: obj.model, cost: cost}
 }
 
 pull(vehicleURL, protoVehicle)

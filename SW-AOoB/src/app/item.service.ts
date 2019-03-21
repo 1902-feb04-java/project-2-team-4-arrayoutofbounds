@@ -9,19 +9,21 @@ export class ItemService {
 
   constructor(private http: HttpClient) { }
   private itemsURL = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/items';
+  private localItemsURL = 'http://localhost:5000/items';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   getItems(): Observable<any>{
-    return this.http.get<any>(this.itemsURL)
+    return this.http.get<any>(this.localItemsURL)
   }
 
   getItem(id:number): Observable<Item>{
-    const url = `${this.itemsURL}/${id}`;
+    const url = `${this.localItemsURL}/search/findByItemId?itemId=${id}`;
     return this.http.get<Item>(url);
   }
   addItem(item:Item): Observable<Item>{
-    return this.http.post<any>(this.itemsURL, item, this.httpOptions);
+    return this.http.post<any>(this.localItemsURL, item, this.httpOptions);
   }
 }

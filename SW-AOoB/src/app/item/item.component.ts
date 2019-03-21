@@ -27,9 +27,10 @@ export class ItemComponent implements OnInit {
     })
   }
 
-  // @Output() addRequest:EventEmitter<any>= new EventEmitter();
-  addItem(): void{
-
+  //@Output() addRequest:EventEmitter<any>= new EventEmitter();
+  addItem(itemId:number, qty:number): void{
+    console.log(`called with ${itemId} and ${qty}`)
+    this.orderService.update.next({'itemId':itemId, 'qty':qty})
   }
   // addItemToOrder(item:Item): void{
   //   this.orderService.addItem(item).subscribe((o) => {o.id})

@@ -3,14 +3,20 @@ import { Order } from '../order';
 import { DataSource } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material';
+import { Item } from '../Item'
 
 
 const ORDER_DATA: Order[] = [
-  {id: 1, firstName: 'Ken', lastName: 'Sparks', officerId: 1000, location: 'Tatooine' },
-  {id: 2, firstName: 'Yoda', lastName: 'Boss', officerId: 1001, location: 'Dagobah' },
-  {id: 3, firstName: 'Luke', lastName: 'Skywalker', officerId: 1002, location: 'Bespin' },
-  {id: 4, firstName: 'Han', lastName: 'Solo', officerId: 1003, location: 'Yavin' },
-  {id: 5, firstName: 'Boosie', lastName: 'Badazz', officerId: 1004, location: 'Hoth' },
+//   {id: 1,  user: 1000, itemsOrdered: [{ id: 1, category: "Weapon", classification:"", model:"x", cost:50 }],
+//     isAuthorized: true, date:null, cost:100 },
+//   {id: 2,  user: 1001, itemsOrdered: [{ id: 2, category: "Weapon", classification:"", model:"y", cost:200 }],
+//     isAuthorized: false, date:null, cost:100 },
+//   {id: 3,  user: 1002, itemsOrdered: [{ id: 3, category: "Weapon", classification:"", model:"z", cost:75 }],
+//     isAuthorized: true, date:null, cost:100 },
+//   {id: 4,  user: 1003, itemsOrdered: [{ id: 4, category: "Weapon", classification:"", model:"a", cost:125 }],
+//     isAuthorized: false, date:null, cost:100 },
+//   {id: 5,  user: 1004, itemsOrdered: [{ id: 5, category: "Weapon", classification:"", model:"b", cost:25 }],
+//     isAuthorized: true, date:null, cost:100 },
 ]; 
 
 // const initialSelection = [];
@@ -24,7 +30,7 @@ const ORDER_DATA: Order[] = [
 })
 export class OrdersComponent {
 
-  displayedColumns: string[] = ['select','id', 'firstName', 'lastName', 'officerId', 'location'];
+  displayedColumns: string[] = ['select','id', 'user', 'itemsOrdered', 'isAuthorized', 'date', 'cost'];
   dataSource = new MatTableDataSource<Order>(ORDER_DATA);
   selection = new SelectionModel<Order>(true, []);
 
@@ -47,7 +53,7 @@ export class OrdersComponent {
     if(!row){
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.firstName + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.user + 1}`;
   }
 
   constructor() { }
