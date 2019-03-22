@@ -5,7 +5,7 @@ export class Item{
     classification:string;
     model:string;
     cost:number;
-    isRestricted:boolean;
+    restricted:boolean;
 
     constructor(obj)
     {
@@ -14,6 +14,6 @@ export class Item{
         this.classification = obj.classification;
         this.model = obj.model;
         this.cost = obj.cost;
-        this.isRestricted = obj.isRestricted;
+        this.restricted = obj.restricted;
     }
 }

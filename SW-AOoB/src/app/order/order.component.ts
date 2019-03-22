@@ -64,7 +64,7 @@ export class OrderComponent implements OnInit {
   getRestrictedStatus(): boolean{
     let restricted = false;
     this.currentOrder.itemsOrdered.forEach(e => {
-      if(e.isRestricted) restricted =true;
+      if(e.restricted) restricted =true;
     })
     return restricted;
   }
@@ -74,6 +74,8 @@ export class OrderComponent implements OnInit {
    
     this.orderService.addOrder(slimOrder).subscribe(() => {
       console.log('Order Submitted')
+      console.log(slimOrder)
+
       this.newOrder();
     })
   }
