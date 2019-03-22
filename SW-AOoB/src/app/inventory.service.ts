@@ -11,21 +11,15 @@ export class InventoryService {
 
   constructor(private http: HttpClient) { }
   inventories = INVENTORIES;
+  private officersUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers';
   private invUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/inventories';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  // getInventories(locationId:string): Observable<any>{
-  //   const url = `${this.invUrl}/search/findByLocation_id?category=${locationId}`;
-  //   return this.http.get<any>(url);
-  // }
-  // getInventory(location_id:number): Observable<any>{
-  //   const url = `${this.invUrl}/search/findbyLocation?location_id=${location_id}`;
-  //   return this.http.get<any>(url);
-  // }
-
-  getInventories(): Observable<Inventories[]>{
-    return of(INVENTORIES);
+  getOfficer(UserId:number): Observable<any>{
+    const url = `${this.officersUrl}/search/findbyOfficerId?OfficerId=${UserId}`;
+    return this.http.get<any>(url);
   }
 }

@@ -13,6 +13,7 @@ public class Officer
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	private long officerId;
 	private String rank;
 	private String firstName;
 	private String lastName;
@@ -101,6 +102,14 @@ public class Officer
 
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
+	}
+
+	public long getOfficerId() {
+		return officerId;
+	}
+
+	public void setOfficerId(long officerId) {
+		this.officerId = officerId;
 	}
 	
 }

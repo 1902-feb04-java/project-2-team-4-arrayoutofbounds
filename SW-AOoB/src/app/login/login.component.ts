@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { contentHeaders } from '../headers';
 import { Router } from '@angular/router';
+import { Officer } from '../officer';
+import { LoginService} from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +12,28 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router, public http: HttpClient) {}
+  constructor(
+    private loginService:LoginService,
+    public router: Router,
+    public http: HttpClient
+  ) {}
+  user: Officer[];
+  
+  @Input() 
+  credentials = { username:'user', password:'pass'};
 
-  ngOnInit() {}
-
-  // login(event, username, password) {
-  //   event.preventDefault();
-  //   let body = {username: username, password: password};
-  //   this.http.post('http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers', body, { headers: contentHeaders})
-  //   .subscribe(currentUser => {
-  //     localStorage.setItem('currentUser',currentUser.username);
-  //     this.router.navigate(['home']);
-  //     }
-  //   );
-  // }
+  getUser(): void {
+    this.loginService.getUser(this.credentials.username,this.credentials.password)
+    .subscribe(user => {
+      this.user = user._embedded.officers;
+      
+      localStorage.setItem('currentUser',user.firstName);
+      localStorage.setItem('rank',user.rank);
+      localStorage.setItem('usename',user.username);
+      localStorage.setItem('password',user.password);
+    })
+  }
+  ngOnInit() {
+    this.getUser();
+  }
 }

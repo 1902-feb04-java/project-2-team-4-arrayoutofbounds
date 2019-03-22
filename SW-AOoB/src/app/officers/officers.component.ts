@@ -12,16 +12,16 @@ export class OfficersComponent implements OnInit
   constructor(private officerService:OfficerService) { }
   officers: Officer[];
   // loc:Location = {id:1, name: "Valley of Bones", membershipGroup: 1}
-  currentOfficer: Officer = {id: 1, firstName: "Tim", rank: "Colonel"};
+  //currentOfficer: Officer = {id: 1, firstName: "Tim", rank: "Colonel"};
  
-  getOfficer(): void
-  {
-    this.officerService.getOfficer(1)
-    .subscribe(officer => {
-      this.currentOfficer = officer;
-      console.log(officer);
-    })
-  }
+  // getOfficer(): void
+  // {
+  //   this.officerService.getOfficer(1)
+  //   .subscribe(officer => {
+  //     this.currentOfficer = officer;
+  //     console.log(officer);
+  //   })
+  // }
 
   getOfficers(): void
   {
