@@ -18,6 +18,7 @@ public class Item
 	private String classification;
 	private String model;
 	private int cost;
+	private boolean isRestricted;
 	
 	public Item()
 	{}
@@ -61,5 +62,17 @@ public class Item
 	}
 	public void setCost(int cost) {
 		this.cost = cost;
+	}
+
+	public boolean isRestricted() {
+		return isRestricted;
+	}
+
+	public void setRestricted(boolean isRestricted) {
+		this.isRestricted = isRestricted;
+	}
+
+	public void setItemId(long itemId) {
+		this.itemId = itemId;
 	}
 }

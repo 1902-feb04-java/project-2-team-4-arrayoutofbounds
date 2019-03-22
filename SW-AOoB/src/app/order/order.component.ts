@@ -39,7 +39,7 @@ export class OrderComponent implements OnInit {
         this.itemService.getItem(k).subscribe((item) => {
           let itemOnly = new Item(item)
           items.push(itemOnly);
-          console.log(itemOnly)
+          // console.log(itemOnly)
 
         })
       }
@@ -61,11 +61,21 @@ export class OrderComponent implements OnInit {
     this.currentOrder = new Order(this.orderNumber++, 1, new Map<number, number>());
   }
   
+  getRestrictedStatus(): boolean{
+    let restricted = false;
+    this.currentOrder.itemsOrdered.forEach(e => {
+      if(e.restricted) restricted =true;
+    })
+    return restricted;
+  }
   submitOrder(): void{
-    let slimOrder = {orderId: this.currentOrder.orderId, userId: 1, cost: this.getCost(), itemsOrdered: JSON.stringify(this.currentOrder.itemsOrdered)}
+    let slimOrder = {orderId: this.currentOrder.orderId, userId: 1, cost: this.getCost(), 
+      itemsOrdered: JSON.stringify(this.currentOrder.itemsOrdered), authorizationRequired: this.getRestrictedStatus()}
    
     this.orderService.addOrder(slimOrder).subscribe(() => {
       console.log('Order Submitted')
+      console.log(slimOrder)
+
       this.newOrder();
     })
   }
