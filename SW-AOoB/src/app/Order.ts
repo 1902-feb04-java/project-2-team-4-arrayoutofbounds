@@ -5,7 +5,7 @@ export class Order{
     orderId:number;
     user:number;
     itemsOrdered:Item[];
-    items:Map<number, number>
+    itemsMap:Map<number, number>
     isAuthorized:boolean;
     // date:Date;
     cost:number
@@ -14,6 +14,6 @@ export class Order{
         // this.id = id;
         this.orderId = orderNum;
         this.user = user;
-        this.items = itemsMap;
+        this.itemsMap = itemsMap;
     }
 }
