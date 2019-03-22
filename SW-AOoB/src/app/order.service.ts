@@ -15,8 +15,7 @@ import { Item } from './item';
 
   export class OrderService{
 
-    currentOrder:Order;
-    orders:Order[];
+    // public currentOrder = new Subject();
     public update = new Subject();
       
     constructor(
@@ -33,12 +32,6 @@ import { Item } from './item';
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    // //Brandon's method to items to order
-    // addItem(item:Item): Observable<Order>{
-    //     this.currentOrder.itemsOrdered.push(item)
-    //     return of(this.currentOrder)
-    //   }
-    
     //Get All Orders 
     getOrders(): Observable<any>{
         return this.http.get<any>(this.orderURL)

@@ -19,6 +19,7 @@ public class Order
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private long orderId;
 	private long userId;
 //	private Item[] itemsOrdered;
