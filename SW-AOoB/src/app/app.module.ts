@@ -16,8 +16,7 @@ import {MatTabsModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { OrderHistoryComponent } from './OrderHistory/OrderHistory.component';
 import { MatTableModule } from '@angular/material/table';
-import {MatCheckboxModule } from '@angular/material';
-import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule, MatInputModule, MatFormFieldModule } from '@angular/material';
 
 
 @NgModule({
@@ -41,7 +40,8 @@ import {MatInputModule} from '@angular/material/input';
     MatTabsModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     OrderService

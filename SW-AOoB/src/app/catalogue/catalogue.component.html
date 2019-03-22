@@ -1,4 +1,4 @@
-
+<app-order></app-order>
 <mat-tab-group id = 'tabs'>
 
   <mat-tab label = 'Weapons' id = 'weapon_table'>
@@ -17,14 +17,13 @@
         <mat-header-cell *matHeaderCellDef>Cost</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.cost}}</mat-cell>
       </ng-container>
-      <!-- <ng-container matColumnDef="quantity">
+      <ng-container matColumnDef="quantity">
         <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <mat-form-field>
-            <matInput type="number" value="0"></matInput>
-          </mat-form-field>
+        <mat-cell *matCellDef = "let element">
+                <input matInput matNativeControl #ref id='quanBox' type="number" min ='0' value="0" 
+                (change)="addItem(element.itemId, ref.value)">
         </mat-cell>
-      </ng-container> -->
+      </ng-container>
     </mat-table>
   </mat-tab>
 
@@ -44,7 +43,12 @@
       <mat-header-cell *matHeaderCellDef>Cost</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.cost}}</mat-cell>
     </ng-container>
-    
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+      <mat-cell *matCellDef = "let element">
+              <input matInput matNativeControl id='quanBox' type="number" value="0">
+      </mat-cell>
+    </ng-container>
   </mat-table>
   </mat-tab>
   
@@ -63,6 +67,12 @@
         <ng-container matColumnDef="cost">
           <mat-header-cell *matHeaderCellDef>Cost</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.cost}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+          <mat-cell *matCellDef = "let element">
+                <input matInput matNativeControl id='quanBox' type="number" value="0">
+          </mat-cell>
         </ng-container>
       </mat-table>
   </mat-tab>
@@ -83,6 +93,12 @@
     <ng-container matColumnDef="cost">
       <mat-header-cell *matHeaderCellDef>Cost</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.cost}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+      <mat-cell *matCellDef = "let element">
+          <input matInput matNativeControl id='quanBox' type="number" value="0">
+      </mat-cell>
     </ng-container>
   </mat-table>
   </mat-tab>
