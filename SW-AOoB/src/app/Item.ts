@@ -1,5 +1,6 @@
 export class Item{
     id:number;
+    itemId:number;
     category:string;
     classification:string;
     model:string;
@@ -8,7 +9,7 @@ export class Item{
 
     constructor(obj)
     {
-        this.id = obj.id;
+        this.itemId = obj.itemId;
         this.category = obj.category;
         this.classification = obj.classification;
         this.model = obj.model;

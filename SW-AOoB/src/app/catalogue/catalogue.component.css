@@ -1,6 +1,12 @@
 #tabs{
     position:absolute;
-    width: 800px;
+    width: 900px;
     left: 20%;
-    background-color: black;
 }
+#quanBox{
+    width: 50px;
+}
+.mat-table {
+    flex: 0 0 100px !important;
+    white-space: unset !important;
+  }

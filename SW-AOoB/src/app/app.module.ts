@@ -12,14 +12,12 @@ import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { OrderService } from './order.service';
-import {MatTabsModule} from '@angular/material';
+import {MatTabsModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { OrderHistoryComponent } from './OrderHistory/OrderHistory.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatCheckboxModule } from '@angular/material';
 import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
-
-
 
 @NgModule({
   declarations: [
@@ -42,7 +40,9 @@ import { ConfirmationPageComponent } from './confirmation-page/confirmation-page
     HttpClientModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     OrderService
