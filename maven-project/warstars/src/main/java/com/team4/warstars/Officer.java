@@ -16,7 +16,8 @@ public class Officer
 	private String rank;
 	private String firstName;
 	private String lastName;
-	
+	private String userName;
+	private String passWord;
 	//these are all references to other (or this) tables
 	private int superiorOfficerId;
 	private int locationId;
@@ -85,4 +86,21 @@ public class Officer
 	public void setArmyDivisionId(int armyDivisionId) {
 		this.armyDivisionId = armyDivisionId;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+	
 }
