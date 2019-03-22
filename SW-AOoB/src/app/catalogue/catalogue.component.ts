@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Item} from '../Item';
 import {ItemService} from '../item.service';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-catalogue',
@@ -9,13 +10,13 @@ import {ItemService} from '../item.service';
 })
 
 export class CatalogueComponent implements OnInit{
-  constructor(private itemService:ItemService){}
+  constructor(private itemService:ItemService, private orderService:OrderService){}
   weapon_Data:Item[];
   vehicle_Data:Item[];
   supplies_Data:Item[];
   starships_Data:Item[];
 
-  displayedColumns: string[]=['type', 'model', 'cost'];
+  displayedColumns: string[]=['type', 'model', 'cost', 'quantity'];
   weaponSource = this.weapon_Data;
   vehicleSource = this.vehicle_Data;
   suppliesSource = this.supplies_Data;
@@ -48,5 +49,12 @@ export class CatalogueComponent implements OnInit{
     this.getSupplies();
     this.getShips();
   }
+
+  addItem(itemId:number, qty:number): void{
+    console.log(`called with ${itemId} and ${qty}`)
+    this.orderService.update.next({'itemId':itemId, 'qty':qty})
+  }
 }
+
+
 

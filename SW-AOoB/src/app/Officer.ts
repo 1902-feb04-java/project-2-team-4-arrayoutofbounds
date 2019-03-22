@@ -1,9 +1,12 @@
 export class Officer
 {
     id:number;
+    officerId:number;
     firstName:string;
-    // lastName:string;
+    lastName:string;
     rank:string;
-    // superiorOfficer:number; //references another Officer.id
-    // location:Location; //references a location.id
+    superiorOfficer:number;
+    locationId:number;
+    userName:string;
+    password:string;
 }

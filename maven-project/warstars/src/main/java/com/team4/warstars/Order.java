@@ -19,11 +19,13 @@ public class Order
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private long orderId;
 	private long userId;
 //	private Item[] itemsOrdered;
 	private String itemsOrdered;
 	private long cost;
+	private boolean authorizationRequired;
 
 	public Order() {
 		super();
@@ -64,5 +66,11 @@ public class Order
 	}
 	public void setCost(long cost) {
 		this.cost = cost;
+	}
+	public boolean isAuthorizationRequired() {
+		return authorizationRequired;
+	}
+	public void setAuthorizationRequired(boolean authorizationRequired) {
+		this.authorizationRequired = authorizationRequired;
 	}
 }

@@ -5,15 +5,15 @@ export class Order{
     orderId:number;
     user:number;
     itemsOrdered:Item[];
-    items:Map<number, number>
+    itemsMap:Map<number, number>
     isAuthorized:boolean;
     // date:Date;
-    cost:number
+    cost:number // calc by method
     constructor(orderNum:number, user:number, itemsMap)//id:number,
     {
         // this.id = id;
         this.orderId = orderNum;
         this.user = user;
-        this.items = itemsMap;
+        this.itemsMap = itemsMap;
     }
 }

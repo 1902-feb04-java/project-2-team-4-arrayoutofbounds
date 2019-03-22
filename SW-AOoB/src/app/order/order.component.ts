@@ -21,27 +21,29 @@ export class OrderComponent implements OnInit {
     // this.addItem({'itemId':1, 'qty':1});
     this.orderService.update.subscribe((obj =>{
       this.addItem(obj);
-      console.log(obj)
+      // console.log(obj)
     }))
   }
   orderNumber:number;
   currentOrder:Order 
  
   addItem(item:any):void{
-    this.currentOrder.items.set(item.itemId, item.qty)
-    this.currentOrder.itemsOrdered = this.getItems();
+    this.currentOrder.itemsMap.set(item.itemId, item.qty) //add item to map
+    this.currentOrder.itemsOrdered = this.getItems(); //return array from map
   }
   getItems():Item[]{
     let items:Item[] = [];
-    this.currentOrder.items.forEach((v,k,m)=>{
+    this.currentOrder.itemsMap.forEach((v,k,m)=>{
       if(v>0)
       {
         this.itemService.getItem(k).subscribe((item) => {
-          items.push(item);
+          let itemOnly = new Item(item)
+          items.push(itemOnly);
+          // console.log(itemOnly)
+
         })
       }
     })
-    console.log(items)
     return items;
   }
  
@@ -49,8 +51,9 @@ export class OrderComponent implements OnInit {
     let cost = 0;
     if(this.currentOrder.itemsOrdered)
     {
-      this.currentOrder.itemsOrdered.forEach((e) => {
-        cost += e.cost;
+      this.currentOrder.itemsOrdered.forEach((e) => 
+      {
+        cost += e.cost * this.currentOrder.itemsMap.get(e.itemId);
       })
     }
     return cost
@@ -59,10 +62,23 @@ export class OrderComponent implements OnInit {
     this.currentOrder = new Order(this.orderNumber++, 1, new Map<number, number>());
   }
   
+  getRestrictedStatus(): boolean{
+    let restricted = false;
+    this.currentOrder.itemsOrdered.forEach(e => {
+      if(e.restricted) restricted =true;
+    })
+    return restricted;
+  }
+
   submitOrder(): void{
-    let slimOrder = {orderId: this.currentOrder.orderId, userId: 1, cost: this.getCost(), itemsOrdered: JSON.stringify(this.getItems())}
+    let slimOrder = {userId: 1, cost: this.getCost(), 
+      itemsOrdered: JSON.stringify(this.currentOrder.itemsOrdered), authorizationRequired: this.getRestrictedStatus()}
+      
+    // this.orderService.currentOrder.next(this.currentOrder);
+    
     this.orderService.addOrder(slimOrder).subscribe(() => {
       console.log('Order Submitted')
+      console.log(slimOrder)
       this.newOrder();
     })
   }

@@ -40,7 +40,8 @@ function push(url, obj){
         if (xhr.readyState == 4) 
         {
         	var data = JSON.parse(xhr.response);
-        	console.log(data);
+            console.log(data);
+            document.getElementById('thediv').insertAdjacentHTML('beforeend', data)
         }
     };
     xhr.open('POST',baseRDS+url, true);
@@ -56,17 +57,19 @@ function push(url, obj){
     // private int cost;
 function createItem(cat, cla, mod, cost)
 {
-    return {itemId:count++, category:cat, classification: cla, model: mod, cost: cost}
+    return {itemId:count++, category:cat, classification: cla, model: mod, cost: cost, is_restricted: false};
 }   	
 
 function protoVehicle(obj){
     let cost = obj.cost_in_credits =="unknown"? 10500: obj.cost_in_credits;
-    return {itemId:count++, category:"Vehicle", classification: obj.vehicle_class, model: obj.model, cost: cost}
+    let restricted =  obj.vehicle_class == 'Starfighter'? true:false;
+    return {itemId:count++, category:"Vehicle", classification: obj.vehicle_class, model: obj.model, cost: cost, is_restricted: restricted}
 }
 
 function protoShip(obj){
     let cost = obj.cost_in_credits =="unknown"? 420000: obj.cost_in_credits;
-    return {itemId:count++, category:"Starships", classification: obj.starship_class, model: obj.model, cost: cost}
+    let restricted =  obj.starship_class == 'Starfighter'? true:false;
+    return {itemId:count++, category:"Starships", classification: obj.starship_class, model: obj.model, cost: cost, is_restricted: restricted}
 }
 
 pull(vehicleURL, protoVehicle)
@@ -90,5 +93,5 @@ items.forEach((e) => {
 // let loc = {id: 1, membershipGroup: 1, name:"Nebula"};
 // let off = {firstName:"BoB", rank:"Sarge"}
 // push(itemsRDS,loc);
-
+//thediv
 

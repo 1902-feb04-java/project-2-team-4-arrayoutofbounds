@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { contentHeaders } from '../headers';
 import { Router } from '@angular/router';
+import { Officer } from '../officer';
+import { LoginService} from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +12,26 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router, public http: HttpClient) {}
+  constructor(
+    private loginService:LoginService,
+    public router: Router,
+    public http: HttpClient
+  ) {}
+  
+  ngOnInit() {
+  }
+  user: Officer[];
 
-  ngOnInit() {}
+  getUser(username:string,password:string): void {
+    this.loginService.getUser(username,password)
+    .subscribe(user => {
+      this.user = user;
+      localStorage.setItem('officer', JSON.stringify(user))
+      console.log(user);
+    })
+    
+    this.router.navigate(['/home']);
+    console.log(username +' ' +password);
+  }
 
-  // login(event, username, password) {
-  //   event.preventDefault();
-  //   let body = {username: username, password: password};
-  //   this.http.post('http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers', body, { headers: contentHeaders})
-  //   .subscribe(currentUser => {
-  //     localStorage.setItem('currentUser',currentUser.username);
-  //     this.router.navigate(['home']);
-  //     }
-  //   );
-  // }
 }
