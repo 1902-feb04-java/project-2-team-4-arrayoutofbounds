@@ -1,5 +1,5 @@
 export class Item{
-    itemId:number;
+    id:number;
     category:string;
     classification:string;
     model:string;
