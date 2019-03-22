@@ -1,6 +1,6 @@
 <h2>Login</h2>
 <div>
-  <input type="text" name="username" [(ngModel)] = "credentials.username" placeholder="username"/><br>
-  <input type="password" name="password" [(ngModel)]="credentials.password" placeholder="password"/>
+  <input type="text" name="username" #username placeholder="username"/><br>
+  <input type="password" name="password" #password placeholder="password"/>
 </div>
-<a routerLink = "/home"><button>Submit</button></a>
+<a><button (click)= getUser(username.value,password.value)>Submit</button></a>

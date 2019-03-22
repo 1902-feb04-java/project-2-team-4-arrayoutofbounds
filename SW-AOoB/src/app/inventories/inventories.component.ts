@@ -26,12 +26,12 @@ export class InventoriesComponent implements OnInit {
   username:string = localStorage.getItem('username');
   password:string = localStorage.getItem('password');
 
-  setUser(): void{
-    this.officerService.getUser(this.username,this.password)
-    .subscribe(officers => {
-      this.officers = officers._embedded.officers;
-    })
-  }
+  // setUser(): void{
+  //   this.inventoryService.getOfficer(this.username,this.password)
+  //   .subscribe(officers => {
+  //     this.officers = officers._embedded.officers;
+  //   })
+  // }
   
   // getItems():Item[]{
   //   let items:Item[] = [];
@@ -48,7 +48,7 @@ export class InventoriesComponent implements OnInit {
   // }
   // inventories._embedded.
   ngOnInit() {
-    this.setUser();
+    //this.setUser();
   }
 
 }
