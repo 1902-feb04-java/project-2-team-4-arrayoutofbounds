@@ -1,5 +1,6 @@
-<p>Login</p>
+<h2>Login</h2>
 <div>
-  <input [(ngModel)] = "credentials.username" placeholder="username"/>
+  <input type="text" #username id="username" placeholder="username"/><br>
+  <input type="password" #password id="password" placeholder="password"/>
 </div>
 <a routerLink = "/home"><button>Submit</button></a>
