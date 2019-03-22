@@ -51,8 +51,9 @@ export class OrderComponent implements OnInit {
     let cost = 0;
     if(this.currentOrder.itemsOrdered)
     {
-      this.currentOrder.itemsOrdered.forEach((e) => {
-        cost += e.cost;
+      this.currentOrder.itemsOrdered.forEach((e) => 
+      {
+        cost += e.cost * this.currentOrder.itemsMap.get(e.itemId);
       })
     }
     return cost
@@ -68,14 +69,16 @@ export class OrderComponent implements OnInit {
     })
     return restricted;
   }
+
   submitOrder(): void{
-    let slimOrder = {orderId: this.currentOrder.orderId, userId: 1, cost: this.getCost(), 
+    let slimOrder = {userId: 1, cost: this.getCost(), 
       itemsOrdered: JSON.stringify(this.currentOrder.itemsOrdered), authorizationRequired: this.getRestrictedStatus()}
-   
+      
+    // this.orderService.currentOrder.next(this.currentOrder);
+    
     this.orderService.addOrder(slimOrder).subscribe(() => {
       console.log('Order Submitted')
       console.log(slimOrder)
-
       this.newOrder();
     })
   }

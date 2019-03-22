@@ -15,6 +15,11 @@ export class ItemService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  items = [];
+
+  fillItems(): void{
+    
+  }
   getItems(): Observable<any>{
     return this.http.get<any>(this.itemsURL)
   }

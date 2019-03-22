@@ -8,7 +8,7 @@ export class Order{
     itemsMap:Map<number, number>
     isAuthorized:boolean;
     // date:Date;
-    cost:number
+    cost:number // calc by method
     constructor(orderNum:number, user:number, itemsMap)//id:number,
     {
         // this.id = id;
