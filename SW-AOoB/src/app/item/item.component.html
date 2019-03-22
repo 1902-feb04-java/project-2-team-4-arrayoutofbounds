@@ -4,7 +4,7 @@
 <ul>
   <div *ngIf = items>
   <li *ngFor="let item of items">
-    <span>{{item.classification}}</span> - {{item.model}}
+    <span>{{item.classification}}</span> - {{item.model}} - {{item.restricted}}
     <button (click) ="addItem(item.itemId,1)">+</button>
   </li>
 </div>

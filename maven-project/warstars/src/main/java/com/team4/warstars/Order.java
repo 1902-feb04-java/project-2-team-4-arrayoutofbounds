@@ -24,6 +24,7 @@ public class Order
 //	private Item[] itemsOrdered;
 	private String itemsOrdered;
 	private long cost;
+	private boolean authorizationRequired;
 
 	public Order() {
 		super();
@@ -64,5 +65,11 @@ public class Order
 	}
 	public void setCost(long cost) {
 		this.cost = cost;
+	}
+	public boolean isAuthorizationRequired() {
+		return authorizationRequired;
+	}
+	public void setAuthorizationRequired(boolean authorizationRequired) {
+		this.authorizationRequired = authorizationRequired;
 	}
 }
