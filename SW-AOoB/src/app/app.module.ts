@@ -17,6 +17,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { OrderHistoryComponent } from './OrderHistory/OrderHistory.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatCheckboxModule } from '@angular/material';
+import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
 
 
 
@@ -30,7 +31,8 @@ import {MatCheckboxModule } from '@angular/material';
     ItemComponent,
     OrderComponent,
     CatalogueComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    ConfirmationPageComponent
   ],
   imports: [
     FormsModule,

@@ -39,7 +39,7 @@ export class OrderComponent implements OnInit {
         this.itemService.getItem(k).subscribe((item) => {
           let itemOnly = new Item(item)
           items.push(itemOnly);
-          console.log(itemOnly)
+          // console.log(itemOnly)
 
         })
       }
