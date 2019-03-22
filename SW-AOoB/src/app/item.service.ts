@@ -23,6 +23,10 @@ export class ItemService {
     const url = `${this.itemsURL}/search/findByItemId?itemId=${id}`;
     return this.http.get<Item>(url);
   }
+  getItemCategory(type:string):Observable<any>{
+    const url = `${this.itemsURL}/search/findByCategory?category=${type}`;
+    return this.http.get<any>(url);
+  }
   addItem(item:Item): Observable<Item>{
     return this.http.post<any>(this.itemsURL, item, this.httpOptions);
   }

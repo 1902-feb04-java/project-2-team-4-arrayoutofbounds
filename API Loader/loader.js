@@ -43,7 +43,7 @@ function push(url, obj){
         	console.log(data);
         }
     };
-    xhr.open('POST',localRDS+url, true);
+    xhr.open('POST',baseRDS+url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(obj));
 }
