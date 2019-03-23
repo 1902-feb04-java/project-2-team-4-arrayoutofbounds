@@ -22,50 +22,51 @@ export class OrderHistoryDetailComponent implements OnInit  {
     private location:Location,
     private orderService:OrderService
     ) { }
-
+    currentOrder:Order = new Order(1);
   ngOnInit() {
-    // this.orderService.getOrders().subscribe((orders) =>{
-    //   ORDER_DETAILS = orders._embedded.orders;
-    //   this.parseData();
-    //   console.log(ORDER_DETAILS);
-    //  })
-    this.getOrderById();
-  }
+    let orderId = + this.route.snapshot.paramMap.get('id');
+    console.log(orderId);
+    this.orderService.getOrderById(orderId)
+      .subscribe((order) => {
+          this.currentOrder = order;
+          this.currentOrder.itemsOrdered = this.parseData(this.currentOrder.itemsOrdered);
+          console.log(this.currentOrder);
 
-  getOrderById(){
-    const orderId = +this.route.snapshot.paramMap.get('id');
-      console.log(orderId);
-      this.orderService.getOrderById(orderId)
-        .subscribe((order) => {
-          ITEM_DETAILS = order.itemsOrdered
-          this.parseData()
+      })
+
+    }
+
+  // getOrderById(){
+  //   const orderId = +this.route.snapshot.paramMap.get('id');
+  //     console.log(orderId);
+  //     this.orderService.getOrderById(orderId)
+  //       .subscribe((order) => {
+  //         ITEM_DETAILS = order.itemsOrdered
+  //         this.parseData()
          
 
-          ORDER_DETAILS[0] =order.orderId// <Order> (<unknown> order.orderId);
-          ORDER_DETAILS[1] = order.cost //<Order> (<unknown> order.cost);
-          ORDER_DETAILS[2] = order.authorizationRequired;//<Order> (<unknown> order.isAuthorized);
-          ORDER_DETAILS[3] = order.itemsOrdered//<Order> (<unknown> order.itemsOrdered);
-        })
-        console.log("order details:");
-        console.log(ORDER_DETAILS);
-        console.log("\nItems details");
-        console.log(ITEM_DETAILS);
+  //         ORDER_DETAILS[0] =order.orderId// <Order> (<unknown> order.orderId);
+  //         ORDER_DETAILS[1] = order.cost //<Order> (<unknown> order.cost);
+  //         ORDER_DETAILS[2] = order.authorizationRequired;//<Order> (<unknown> order.isAuthorized);
+  //         ORDER_DETAILS[3] = order.itemsOrdered//<Order> (<unknown> order.itemsOrdered);
+  //       })
+  //       console.log("order details:");
+  //       console.log(ORDER_DETAILS);
+  //       console.log("\nItems details");
+  //       console.log(ITEM_DETAILS);
     
-  }
+  // }
 
   //Back Button
   goBack(): void{
     this.location.back();
   }
 
-  parseData(){
-    //<Item []> 
-    // let items;
-    //   items = JSON.parse(ITEM_DETAILS as unknown as string);
-      // items.array.forEach(element => {
-      //   ITEM_DETAILS.push(new Item(element))
-      // });
-      //ITEM_DETAILS = items;
-  }
+  parseData(ITEM_DETAILS): Item[]{
+    // let items = [];
+    let data = JSON.parse(ITEM_DETAILS as unknown as string);
+    console.log(data)
+    return data  
+}
 
 }

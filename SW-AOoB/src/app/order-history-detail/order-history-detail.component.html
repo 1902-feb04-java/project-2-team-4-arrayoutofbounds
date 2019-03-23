@@ -1,16 +1,27 @@
 
+  <!-- <div *ngIf="curentOrder"> -->
   <h3>Order Details</h3>
-  <ul>
-      <li > {{ ITEM_DETAILS }}</li>
-    </ul>
 
-  <ul>
-    <li *ngFor="let order of ORDER_DETAILS"> {{order}}</li>
-  </ul>
-
-  <ul>
-    <li *ngFor="let order of ITEM_DETAILS"> {{items}}</li>
-  </ul>
+  <div>
+  <label>Id: </label>
+    {{currentOrder.orderId }} 
+</div>
+<div>
+    <label>User Id:</label>
+    {{currentOrder.userId }} 
+</div>
+<div>
+    <label>Order Authorized: </label>
+    {{currentOrder.authorizationRequired }}  
+</div>
+    <div class="itemList">
+      <ul>
+          <li *ngFor="let item of currentOrder.itemsOrdered">
+            <span>{{item.model}} - {{item.cost}}</span> 
+          </li>
+        </ul>
+  </div>
+<!-- </div> -->
 
 
 <button (click)="goBack()">BACK</button>
