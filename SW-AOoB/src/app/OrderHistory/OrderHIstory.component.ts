@@ -62,7 +62,7 @@ export class OrderHistoryComponent {
   ngOnInit() {
     this.orderService.getOrders().subscribe((orders) =>{
       ORDER_DATA = orders._embedded.orders;
-      this.parseData();
+      //this.parseData();
       console.log(ORDER_DATA)
       this.dataSource = new MatTableDataSource<Order>(ORDER_DATA);
     })
@@ -70,6 +70,7 @@ export class OrderHistoryComponent {
   parseData():void{
     let items;
     ORDER_DATA.forEach(od =>{
+      //when using parse Error -> 'Unexpected token w in JSON in position 0
       items = JSON.parse(od.itemsOrdered as unknown as string)
       od.itemsOrdered = items;
     })

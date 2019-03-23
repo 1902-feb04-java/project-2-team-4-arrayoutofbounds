@@ -1,27 +1,24 @@
 
   <!-- <div *ngIf="curentOrder"> -->
-  <h3>Order Details</h3>
-
-  <div>
-  <label>Id: </label>
-    {{currentOrder.orderId }} 
-</div>
-<div>
-    <label>User Id:</label>
-    {{currentOrder.userId }} 
-</div>
-<div>
-    <label>Order Authorized: </label>
-    {{currentOrder.authorizationRequired }}  
-</div>
-    <div class="itemList">
-      <ul>
-          <li *ngFor="let item of currentOrder.itemsOrdered">
-            <span>{{item.model}} - {{item.cost}}</span> 
-          </li>
-        </ul>
-  </div>
-<!-- </div> -->
+<h3>Order Details</h3>
+  
+<p>
+   <b>Order #:</b> {{ currentOrder.orderId }} <br>
+   <b>User #:</b> {{ currentOrder.userId }} <br>
+   <b>Total :</b> ${{ currentOrder.cost }} <br>
+   <b>Authorized:</b> {{ currentOrder.authorizationRequired }} <br>
+</p>
+<!-- <div *ngIf="{{currentOrder.authorizationRequired}}; else elseBlock">Authorized: Yes <br></div>
+<ng-template #elseBlock>Authorized: No <br></ng-template> -->
 
 
+ 
+<h3>Item Details:</h3>
+  <p *ngFor="let details of currentOrder.itemsOrdered; let i = index ">
+      <b>Item #:</b> {{ currentOrder.itemsOrdered[i].itemId }} <br>
+      <b>Category:</b> {{ currentOrder.itemsOrdered[i].category }} <br>
+      <b>Class :</b> {{ currentOrder.itemsOrdered[i].classification }} <br>
+      <b>Model:</b> {{ currentOrder.itemsOrdered[i].model }} <br>
+      <b>Item Cost: </b> {{currentOrder.itemsOrdered[i].cost }} <br>
+  </p>
 <button (click)="goBack()">BACK</button>
