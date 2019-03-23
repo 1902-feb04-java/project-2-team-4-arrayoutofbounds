@@ -25,14 +25,17 @@ export class LoginComponent implements OnInit {
   getUser(username:string,password:string): void {
     this.loginService.getUser(username,password)
     .subscribe(user => {
-      this.user = user;
-      localStorage.setItem('officer', JSON.stringify(user))
-      console.log(localStorage.getItem('officer'))
-      // console.log(user);
+      if(user)
+      {
+        console.log(user)
+        this.user = user;
+        localStorage.setItem('officer', JSON.stringify(user))
+        this.router.navigate(['/home']);
+      }else{
+        console.log(document.getElementById('message') != null)
+        document.getElementById('message').style.display = 'block';
+      } 
     })
-    
-    // this.router.navigate(['/home']);
-    console.log(username +' ' +password);
   }
 
 }

@@ -116,5 +116,5 @@ import { Item } from '../models/Item';
       return of(result as T);
     };
   }
-  }
+}
 
