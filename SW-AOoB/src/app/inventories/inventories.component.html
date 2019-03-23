@@ -1,6 +1,6 @@
 <h3>Inventory</h3>
 <ul>
   <li *ngFor="let inventory of inventories">
-    <span>{{inventory.items.get(item.itemId)}} - {{item.model}}</span>
+    <span>inventory id: {{inventory.id}} items map: {{inventory.items}} location Id: {{inventory.locationId}}</span>
   </li>
 </ul>
