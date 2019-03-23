@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('officer', JSON.stringify(user))
         this.router.navigate(['/home']);
       }else{
-        console.log(document.getElementById('message') != null)
+        // console.log(document.getElementById('message') != null)
         document.getElementById('message').style.display = 'block';
       } 
     })

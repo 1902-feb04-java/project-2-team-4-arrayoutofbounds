@@ -88,6 +88,22 @@ export class OrderComponent implements OnInit {
  
   submitOrder(): void
   {
+    let indexArr = [];
+    // for(let i = 0; i< this.currentOrder.itemsMap.size; i++)
+    // {
+    //   indexArr[i] = [];
+    // }
+    // this.currentOrder.itemsOrdered.forEach((i) => {
+    for(let i = 0; i< this.currentOrder.itemsOrdered.length; i++)
+    {
+      let item = this.currentOrder.itemsOrdered[i];
+      if(item != null)
+      {
+        indexArr[i] =[];
+        indexArr[i].push( this.currentOrder.itemsMap.get(item.itemId), item)
+      }
+    }
+    console.log(indexArr)
     let slimOrder = {
       userId: this.user.officerId, 
       cost: this.getCost(), 
