@@ -5,6 +5,7 @@ import { ItemService } from '../services/item.service';
 import { OrderService } from '../services/order.service';
 import { JsonPipe } from '@angular/common';
 import { Officer } from '../models/Officer';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -14,7 +15,12 @@ import { Officer } from '../models/Officer';
 export class OrderComponent implements OnInit {
   user:Officer;
   currentItem:Item;
-  constructor(private itemService:ItemService, private orderService:OrderService) 
+  constructor(
+    private itemService:ItemService,
+     private orderService:OrderService,
+    //  private route: ActivatedRoute,
+    // private location:Location
+     ) 
   { }
   ngOnInit() 
   {
@@ -79,14 +85,14 @@ export class OrderComponent implements OnInit {
     })
     return restricted;
   }
-
-  submitOrder(): void{
+ 
+  submitOrder(): void
+  {
     let slimOrder = {
       userId: this.user.officerId, 
       cost: this.getCost(), 
       itemsOrdered: JSON.stringify(this.currentOrder.itemsOrdered), 
-      authorizationRequired: this.getRestrictedStatus(),
-      orderId: 0
+      authorizationRequired: this.getRestrictedStatus()
     }
       
     // this.orderService.currentOrder.next(this.currentOrder);
@@ -97,4 +103,22 @@ export class OrderComponent implements OnInit {
       this.newOrder();
     })
   }
+   // getOrderById(){
+  //   const orderId = + this.route.snapshot.paramMap.get('id');
+  //     console.log(orderId);
+  //     this.orderService.getOrderById(orderId)
+  //       .subscribe((order) => {
+  //         this.parseData()
+  //       })
+  // }
+
+  // parseData(){
+
+  //   let items;
+  //     items = JSON.parse(this.currentOrder.itemsMap as unknown as string);
+  //     items.array.forEach(element => {
+  //       // ITEM_DETAILS.push(new Item(element))
+  //     });
+  //     // ITEM_DETAILS = items;
+  // }
 }

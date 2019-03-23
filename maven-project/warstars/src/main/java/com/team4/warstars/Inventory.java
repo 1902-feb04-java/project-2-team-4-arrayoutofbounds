@@ -16,7 +16,7 @@ public class Inventory {
 	private long id;
 	private int locationId;
 	//private String personnel[];
-	@Column(length=1024)
+	@Column(length=2048)
 	private String items;
 
 	public Inventory() {

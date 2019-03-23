@@ -22,7 +22,7 @@ public class Officer
 	//these are all references to other (or this) tables
 	private int superiorOfficerId;
 	private int locationId;
-	private int armyDivisionId;
+//	private int armyDivisionId;
 
 	public Officer()
 	{}
@@ -80,13 +80,13 @@ public class Officer
 		this.locationId = locationId;
 	}
 
-	public int getArmyDivisionId() {
-		return armyDivisionId;
-	}
-
-	public void setArmyDivisionId(int armyDivisionId) {
-		this.armyDivisionId = armyDivisionId;
-	}
+//	public int getArmyDivisionId() {
+//		return armyDivisionId;
+//	}
+//
+//	public void setArmyDivisionId(int armyDivisionId) {
+//		this.armyDivisionId = armyDivisionId;
+//	}
 
 	public String getUserName() {
 		return username;
