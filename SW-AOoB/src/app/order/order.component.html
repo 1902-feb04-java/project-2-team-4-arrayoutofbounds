@@ -15,7 +15,7 @@
   <h3>Items: </h3>
     <ul>
         <li *ngFor="let item of currentOrder.itemsOrdered">
-          <span>{{item.model}} {{item.cost}}</span> 
+          <span>{{currentOrder.itemsMap.get(item.itemId)}} - {{item.model}} - {{item.cost}}</span> 
         </li>
       </ul>
 </div>

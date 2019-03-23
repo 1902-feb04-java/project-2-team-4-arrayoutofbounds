@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Order } from '../Order';
-import { Item } from '../item';
-import { ItemService } from '../item.service';
-import { OrderService } from '../order.service';
+import { Order } from '../models/Order';
+import { Item } from '../models/Item';
+import { ItemService } from '../services/item.service';
+import { OrderService } from '../services/order.service';
 import { JsonPipe } from '@angular/common';
+import { Officer } from '../models/Officer';
 
 @Component({
   selector: 'app-order',
@@ -11,11 +12,13 @@ import { JsonPipe } from '@angular/common';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
+  user:Officer;
+  currentItem:Item;
   constructor(private itemService:ItemService, private orderService:OrderService) 
   { }
   ngOnInit() 
   {
-    this.orderNumber = 0;
+    this.user = JSON.parse(localStorage.getItem('officer'))
     this.newOrder();
 
     // this.addItem({'itemId':1, 'qty':1});
@@ -24,12 +27,17 @@ export class OrderComponent implements OnInit {
       // console.log(obj)
     }))
   }
-  orderNumber:number;
   currentOrder:Order 
  
   addItem(item:any):void{
     this.currentOrder.itemsMap.set(item.itemId, item.qty) //add item to map
     this.currentOrder.itemsOrdered = this.getItems(); //return array from map
+  }
+
+  fetchItem(id:number):void{
+    this.itemService.getItem(id).subscribe(it => {
+      this.currentItem = it;
+    })
   }
   getItems():Item[]{
     let items:Item[] = [];
@@ -51,14 +59,17 @@ export class OrderComponent implements OnInit {
     let cost = 0;
     if(this.currentOrder.itemsOrdered)
     {
-      this.currentOrder.itemsOrdered.forEach((e) => {
-        cost += e.cost;
+      this.currentOrder.itemsOrdered.forEach((e) => 
+      {
+        cost += e.cost * this.currentOrder.itemsMap.get(e.itemId);
       })
     }
     return cost
   }
   newOrder(): void{
-    this.currentOrder = new Order(this.orderNumber++, 1, new Map<number, number>());
+   
+  //  console.log(user)
+    this.currentOrder = new Order(this.user.officerId);
   }
   
   getRestrictedStatus(): boolean{
@@ -68,14 +79,21 @@ export class OrderComponent implements OnInit {
     })
     return restricted;
   }
+
   submitOrder(): void{
-    let slimOrder = {orderId: this.currentOrder.orderId, userId: 1, cost: this.getCost(), 
-      itemsOrdered: JSON.stringify(this.currentOrder.itemsOrdered), authorizationRequired: this.getRestrictedStatus()}
-   
+    let slimOrder = {
+      userId: this.user.officerId, 
+      cost: this.getCost(), 
+      itemsOrdered: JSON.stringify(this.currentOrder.itemsOrdered), 
+      authorizationRequired: this.getRestrictedStatus(),
+      orderId: 0
+    }
+      
+    // this.orderService.currentOrder.next(this.currentOrder);
+    
     this.orderService.addOrder(slimOrder).subscribe(() => {
       console.log('Order Submitted')
       console.log(slimOrder)
-
       this.newOrder();
     })
   }

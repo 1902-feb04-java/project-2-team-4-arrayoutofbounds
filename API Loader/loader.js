@@ -44,7 +44,7 @@ function push(url, obj){
             document.getElementById('thediv').insertAdjacentHTML('beforeend', data)
         }
     };
-    xhr.open('POST',localRDS+url, true);
+    xhr.open('POST',baseRDS+url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(obj));
 }

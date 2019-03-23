@@ -1,3 +1,4 @@
+
 #tabs{
     position:absolute;
     width: 900px;
@@ -12,3 +13,6 @@
     flex: 0 0 100px !important;
     white-space: unset !important;
   }
+.make_red{
+    background-color: rgba(255, 0, 0, 0.712);
+}

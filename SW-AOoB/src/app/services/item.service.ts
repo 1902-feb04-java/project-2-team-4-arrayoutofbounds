@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Item} from './Item'
+import {Item} from '../models/Item'
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +15,11 @@ export class ItemService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  items = [];
+
+  fillItems(): void{
+    
+  }
   getItems(): Observable<any>{
     return this.http.get<any>(this.itemsURL)
   }

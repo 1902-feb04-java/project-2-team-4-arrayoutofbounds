@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { InventoryService } from '../inventory.service';
-import { Inventories } from '../inventories';
-import { Item } from '../item';
-import { ItemService } from '../item.service';
-import { OfficerService } from '../officer.service';
-import { Officer } from '../Officer';
+import { InventoryService } from '../services/inventory.service';
+import { Inventories } from '../models/Inventories';
+import { Item } from '../models/Item';
+import { ItemService } from '../services/item.service';
+import { OfficerService } from '../services/officer.service';
+import { Officer } from '../models/Officer';
 import { OfficersComponent } from '../officers/officers.component';
 
 @Component({

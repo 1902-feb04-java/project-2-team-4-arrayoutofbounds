@@ -1,10 +1,10 @@
 <app-order></app-order>
 <mat-tab-group id = 'tabs'>
 
-  <mat-tab label = 'Weapons' id = 'weapon_table'>
+  <mat-tab label = 'Weapons' class="mat-elevation-z8">
     <mat-table #table [dataSource]="weaponSource" >
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make_red':row.restricted}"></mat-row>
       <ng-container matColumnDef="type">
         <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.classification}}</mat-cell>
@@ -27,10 +27,10 @@
     </mat-table>
   </mat-tab>
 
-  <mat-tab label  = 'Vehicles'>
+  <mat-tab label  = 'Vehicles' class="mat-elevation-z8">
     <mat-table #table [dataSource]="vehicleSource" >
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make_red':row.restricted}"></mat-row>
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.classification}}</mat-cell>
@@ -53,10 +53,10 @@
   </mat-table>
   </mat-tab>
   
-  <mat-tab label = 'Starships'>
+  <mat-tab label = 'Starships' class="mat-elevation-z8">
       <mat-table #table [dataSource]="starshipsSource" >
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make_red':row.restricted}"></mat-row>
         <ng-container matColumnDef="type">
           <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.classification}}</mat-cell>
@@ -79,11 +79,10 @@
       </mat-table>
   </mat-tab>
 
-  <mat-tab label = 'Supplies'>
-
+  <mat-tab label = 'Supplies' class="mat-elevation-z8">
     <mat-table #table [dataSource]="suppliesSource" >
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make_red':row.restricted}"></mat-row>
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.classification}}</mat-cell>

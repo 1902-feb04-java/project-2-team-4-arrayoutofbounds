@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from '../order';
+import { Order } from '../models/Order';
 import { DataSource } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material';
-import { Item } from '../Item'
-import { OrderService } from '../order.service';
+import { Item } from '../models/Item'
+import { OrderService } from '../services/order.service';
 
 
 let ORDER_DATA: Order[] = [
@@ -31,7 +31,7 @@ let ORDER_DATA: Order[] = [
 })
 export class OrderHistoryComponent {
 
-  displayedColumns: string[] = ['select','id', 'user', 'itemsOrdered', 'isAuthorized', 'date', 'cost'];
+  displayedColumns: string[] = ['select','orderId', 'userId', 'itemsOrdered', 'authorizationRequired', 'date', 'cost'];
   dataSource = new MatTableDataSource<Order>(ORDER_DATA);
   selection = new SelectionModel<Order>(true, []);
 
@@ -54,7 +54,7 @@ export class OrderHistoryComponent {
     if(!row){
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.user + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.userId + 1}`;
   }
 
   constructor(private orderService:OrderService) { }

@@ -1,0 +1,16 @@
+
+  <h3>Order Details</h3>
+  <ul>
+      <li > {{ ITEM_DETAILS }}</li>
+    </ul>
+
+  <ul>
+    <li *ngFor="let order of ORDER_DETAILS"> {{order}}</li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let order of ITEM_DETAILS"> {{items}}</li>
+  </ul>
+
+
+<button (click)="goBack()">BACK</button>
