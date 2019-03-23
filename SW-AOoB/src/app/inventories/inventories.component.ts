@@ -13,39 +13,44 @@ import { OfficersComponent } from '../officers/officers.component';
   styleUrls: ['./inventories.component.css']
 })
 export class InventoriesComponent implements OnInit {
+  currentUser:Officer;
+  inventory: Inventories;
 
   constructor(
     private inventoryService:InventoryService,
-    private officerService:OfficerService,
     private itemService:ItemService
   ) { }
+  
+  ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('officer'))
+    this.getInventory();
+  }
 
-  officers: Officer[];
-  inventories: Inventories[];
-  id:number = 1;
-  setUser(): void{
-    this.inventoryService.getOfficer(this.id)
-    .subscribe(officers => {
-      this.officers = officers;
+  getInventory(): void{
+    this.inventoryService.getInventory(this.currentUser.locationId)
+    .subscribe(inventory => {
+      this.inventory = inventory;
     })
   }
-  
-  // getItems():Item[]{
-  //   let items:Item[] = [];
-  //   this.inventories.items.forEach((v,k,m)=>{
-  //     if(v>0)
-  //     {
-  //       this.itemService.getItem(k).subscribe((item) => {
-  //         items.push(item);
-  //       })
-  //     }
-  //   })
-  //   console.log(items)
-  //   return items;
-  // }
-  // inventories._embedded.
-  ngOnInit() {
-    //this.setUser();
-  }
 
+  getItems():Item[]{
+    let items:Item[] = [];
+    this.inventory.items.forEach((v,k,m)=>{
+      if(v>0)
+      {
+        this.itemService.getItem(k).subscribe((item) => {
+          let itemOnly = new Item(item)
+          items.push(itemOnly);
+          console.log(items)
+        })
+      }
+    })
+    return items;
+  }
+  // addItems(): void{
+  //   let inv = {
+  //     id: 1,
+  //     items:
+  //   }
+  // }
 }

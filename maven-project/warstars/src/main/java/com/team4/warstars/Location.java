@@ -13,8 +13,8 @@ public class Location
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	private long locationId;
 	private String name;
-	private long inventoryId;
 	
 	public long getId() {
 		return id;
@@ -28,11 +28,12 @@ public class Location
 	public void setName(String name) {
 		this.name = name;
 	}
-	public long getInventoryId() {
-		return inventoryId;
+	public long getLocationId() {
+		return locationId;
 	}
-	public void setInventoryId(long inventoryId) {
-		this.inventoryId = inventoryId;
+	public void setLocationId(long locationId) {
+		this.locationId = locationId;
 	}
+	
 	
 }

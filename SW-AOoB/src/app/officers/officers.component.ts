@@ -39,7 +39,7 @@ export class OfficersComponent implements OnInit
 
   ngOnInit() {
    //this.getOfficer();
-   this.addOfficer();
+   //this.addOfficer();
    this.getOfficers();
   }
 
