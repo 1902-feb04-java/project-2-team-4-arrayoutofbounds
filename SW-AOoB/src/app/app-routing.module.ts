@@ -9,6 +9,7 @@ import {CatalogueComponent} from './catalogue/catalogue.component';
 import { InventoriesComponent } from './inventories/inventories.component';
 import { OrderHistoryComponent } from './OrderHistory/OrderHistory.component';
 import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
+import { OrderHistoryDetailComponent } from './order-history-detail/order-history-detail.component';
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'inventories', component: InventoriesComponent},
   {path:'orderhistory', component: OrderHistoryComponent},
   {path:'confirmation', component: ConfirmationPageComponent},
+  {path: 'detail/:id', component: OrderHistoryDetailComponent}
 ];
 
 @NgModule({

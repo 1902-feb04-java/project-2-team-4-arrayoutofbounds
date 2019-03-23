@@ -30,29 +30,31 @@
 
 
 <!--ID column-->
-<ng-container matColumnDef="id">
+<ng-container matColumnDef="orderId">
   <mat-header-cell *matHeaderCellDef>Order No.</mat-header-cell>
-  <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+  <mat-cell *matCellDef="let element">{{element.orderId}}</mat-cell>
 </ng-container>
 
 <!--User column-->
-<ng-container matColumnDef="user">
+<ng-container matColumnDef="userId">
     <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.user}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.userId}}</mat-cell>
 </ng-container>
 
 <!--Items Ordered column-->"
 <ng-container matColumnDef="itemsOrdered">
     <mat-header-cell *matHeaderCellDef>Items Ordered</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.itemsOrdered[0]}}
-
+    <mat-cell *matCellDef="let element">
+        <a routerLink = "/detail/orderId">
+          <span class="badge">{{element.itemsOrdered}}</span> 
+        </a>
     </mat-cell>
 </ng-container>
 
 <!--Authorization  column-->
-<ng-container matColumnDef="isAuthorized">
+<ng-container matColumnDef="authorizationRequired">
     <mat-header-cell *matHeaderCellDef>Authorized?</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{element.isAuthorized}}</mat-cell>
+    <mat-cell *matCellDef="let element">{{element.authorizationRequired}}</mat-cell>
 </ng-container>
 
  <!--Date column-->

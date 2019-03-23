@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatCheckboxModule } from '@angular/material';
 import { HighInventoryComponent } from './high-inventory/high-inventory.component';
 import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
+import { OrderHistoryDetailComponent } from './order-history-detail/order-history-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { ConfirmationPageComponent } from './confirmation-page/confirmation-page
     CatalogueComponent,
     OrderHistoryComponent,
     HighInventoryComponent,
-    ConfirmationPageComponent
+    ConfirmationPageComponent,
+    OrderHistoryDetailComponent
+
   ],
   imports: [
     FormsModule,
