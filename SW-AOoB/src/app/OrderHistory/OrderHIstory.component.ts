@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from '../order';
+import { Order } from '../models/Order';
 import { DataSource } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material';
-import { Item } from '../Item'
-import { OrderService } from '../order.service';
+import { Item } from '../models/Item'
+import { OrderService } from '../services/order.service';
 
 
 let ORDER_DATA: Order[] = [

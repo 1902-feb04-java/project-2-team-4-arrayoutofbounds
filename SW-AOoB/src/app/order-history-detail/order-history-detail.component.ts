@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Order } from '../order';
-import { OrderService } from '../order.service';
+import { Order } from '../models/Order';
+import { OrderService } from '../services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Item } from '../Item'
+import { Item } from '../models/Item'
 import { map } from 'rxjs/operators'
 
 let ORDER_DETAILS= [];

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of} from 'rxjs';
-import { INVENTORIES } from './mock-inventories';
-import { Inventories } from './Inventories';
+import { INVENTORIES } from '../mock-inventories';
+import { Inventories } from '../models/Inventories';
 
 @Injectable({
   providedIn: 'root'

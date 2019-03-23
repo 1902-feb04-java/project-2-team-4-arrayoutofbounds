@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, pipe, Subscription, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Order } from './Order';
+import { Order } from '../models/Order';
 import { catchError, map, tap} from 'rxjs/operators';
 import { error } from 'protractor';
 import { errorHandler } from '@angular/platform-browser/src/browser';
 import { MessageService } from './message.service';
-import { Item } from './item';
+import { Item } from '../models/Item';
 
 
 @Injectable({

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Order } from '../Order';
-import { Item } from '../item';
-import { ItemService } from '../item.service';
-import { OrderService } from '../order.service';
+import { Order } from '../models/Order';
+import { Item } from '../models/Item';
+import { ItemService } from '../services/item.service';
+import { OrderService } from '../services/order.service';
 import { JsonPipe } from '@angular/common';
 
 @Component({

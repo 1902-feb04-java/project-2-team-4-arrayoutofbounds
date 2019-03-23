@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Officer } from './officer';
-import {OFFICERS} from './mock-officers';
+import { Officer } from '../models/Officer';
+import {OFFICERS} from '../mock-officers';
 
 @Injectable({
   providedIn: 'root'

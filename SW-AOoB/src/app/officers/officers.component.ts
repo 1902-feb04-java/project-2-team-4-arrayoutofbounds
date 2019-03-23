@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Officer } from '../officer';
-import {OfficerService} from '../officer.service';
+import { Officer } from '../models/Officer';
+import {OfficerService} from '../services/officer.service';
 
 @Component({
   selector: 'app-officers',
