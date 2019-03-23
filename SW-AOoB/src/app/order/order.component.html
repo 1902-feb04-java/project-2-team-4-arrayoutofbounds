@@ -1,0 +1,27 @@
+<div>
+  <label>Id: </label>
+    {{currentOrder.id }} 
+</div>
+<div>
+    <label>User Id:</label>
+  {{currentOrder.user }} 
+</div>
+<div>
+    <label>Order Authorized: </label>
+    <!-- {{currentOrder.isAuthorized }}   -->
+</div>
+
+<div *ngIf="getCost()">
+  <h3>Items: </h3>
+    <ul>
+        <li *ngFor="let item of currentOrder.itemsOrdered">
+          <span>{{item.model}} {{item.cost}}</span> 
+        </li>
+      </ul>
+</div>
+<div>
+    <label>Total: </label>
+    {{[getCost()]}} 
+</div>
+<button (click) = "submitOrder()" >Submit</button>
+

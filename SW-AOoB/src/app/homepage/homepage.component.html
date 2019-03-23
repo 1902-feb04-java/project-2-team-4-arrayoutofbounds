@@ -1,13 +1,22 @@
-<p>
-  homepage works!
-</p>
+<h3>Welcome officer: </h3>
 <div class="grid-container">
     <div class="grid-item">
       <a routerLink="/officers"> Profile</a>
     </div>
-    <div class="grid-item">Catalogue</div>
-    <div class="grid-item">Order History</div>
-    <div class="grid-item">Inventory</div>
+    <div class="grid-item">
+      <a routerLink='/catalogue'>Catalogue</a>
+    </div>
+    <div class="grid-item">
+      <a routerLink='/orderhistory'>Orders</a>
+    </div>
+    <div class="grid-item">
+        <a routerLink="/inventories">Inventory</a>
+    </div>
     <div class="grid-item">Troops</div>
     <div class="grid-item">Misc</div>
 </div>
+<ul>
+    <li *ngFor="let user of homepage">
+      <span>{{user.firstName}}</span>
+    </li>
+  </ul>

@@ -14,9 +14,7 @@ public class Location
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
-	
-	//references another location's id
-	private int membershipGroup;
+	private String parent;
 	
 	public long getId() {
 		return id;
@@ -30,10 +28,10 @@ public class Location
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getMembershipGroup() {
-		return membershipGroup;
+	public String getParent() {
+		return parent;
 	}
-	public void setMembershipGroup(int membershipGroup) {
-		this.membershipGroup = membershipGroup;
+	public void setMembershipGroup(String parent) {
+		this.parent = parent;
 	}
 }
