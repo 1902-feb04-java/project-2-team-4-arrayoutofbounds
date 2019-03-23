@@ -7,13 +7,12 @@ export class Order{
     itemsOrdered:Item[];
     itemsMap:Map<number, number>
     authorizationRequired:boolean;
-    // date:Date;
+    date:Date;
     cost:number // calc by method
-    constructor(orderNum:number, user:number, itemsMap)//id:number,
+    constructor(user:number)
     {
-        // this.id = id;
-        this.orderId = orderNum;
         this.userId = user;
-        this.itemsMap = itemsMap;
+        this.itemsMap = new Map<number, number>();
+        this.itemsOrdered = [];
     }
 }
