@@ -22,16 +22,13 @@ export class InventoriesComponent implements OnInit {
 
   officers: Officer[];
   inventories: Inventories[];
-
-  username:string = localStorage.getItem('username');
-  password:string = localStorage.getItem('password');
-
-  // setUser(): void{
-  //   this.inventoryService.getOfficer(this.username,this.password)
-  //   .subscribe(officers => {
-  //     this.officers = officers._embedded.officers;
-  //   })
-  // }
+  id:number = 1;
+  setUser(): void{
+    this.inventoryService.getOfficer(this.id)
+    .subscribe(officers => {
+      this.officers = officers;
+    })
+  }
   
   // getItems():Item[]{
   //   let items:Item[] = [];

@@ -14,7 +14,7 @@ public class Location
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
-	private String parent;
+	private long inventoryId;
 	
 	public long getId() {
 		return id;
@@ -28,10 +28,11 @@ public class Location
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getParent() {
-		return parent;
+	public long getInventoryId() {
+		return inventoryId;
 	}
-	public void setMembershipGroup(String parent) {
-		this.parent = parent;
+	public void setInventoryId(long inventoryId) {
+		this.inventoryId = inventoryId;
 	}
+	
 }
