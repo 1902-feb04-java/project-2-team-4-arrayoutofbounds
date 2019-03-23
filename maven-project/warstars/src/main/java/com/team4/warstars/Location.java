@@ -34,6 +34,4 @@ public class Location
 	public void setLocationId(long locationId) {
 		this.locationId = locationId;
 	}
-	
-	
 }

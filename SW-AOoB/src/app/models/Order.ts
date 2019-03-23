@@ -1,4 +1,5 @@
 import { Item } from './item';
+import { ItemService } from '../services/item.service';
 
 export class Order{
     id:number;
@@ -14,5 +15,15 @@ export class Order{
         this.userId = user;
         this.itemsMap = new Map<number, number>();
         this.itemsOrdered = [];
+        this.orderId = null;
     }
+
+    // public toWeb(): {}{
+    //     return {
+    //         userId: this.userId, 
+    //         // cost: this.getCost(), 
+    //         itemsOrdered: JSON.stringify(this.itemsOrdered), 
+    //         // authorizationRequired: this.getRestrictedStatus(),
+    //     }
+    // }
 }

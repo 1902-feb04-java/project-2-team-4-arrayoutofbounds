@@ -43,7 +43,7 @@ import { Item } from '../models/Item';
 
     //Get Order By ID
     getOrderById(id:number): Observable<Order>{
-        const url = `${this.orderURL}?/id=${id}`;
+        const url = `${this.orderURL}/search/findByOrderId?orderId=${id}`;
         return this.http.get<Order>(url)
         .pipe(
             tap(_ => this.log(`Fetched Order #${id}`)),
