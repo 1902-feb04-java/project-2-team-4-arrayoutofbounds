@@ -45,7 +45,7 @@
 <ng-container matColumnDef="itemsOrdered">
     <mat-header-cell *matHeaderCellDef>Items Ordered</mat-header-cell>
     <mat-cell *matCellDef="let element">
-        <a routerLink = "/detail/orderId">
+        <a routerLink = "/detail/{{element.orderId}}">
           <span class="badge">{{element.itemsOrdered}}</span> 
         </a>
     </mat-cell>
