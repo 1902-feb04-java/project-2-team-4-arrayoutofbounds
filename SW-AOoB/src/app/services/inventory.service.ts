@@ -32,7 +32,7 @@ export class InventoryService {
   // }
 
   getLocation(locationId:number): Observable<any>{
-    const url =`${this.locationUrl}/search/findbyLocationId?LocationId=${locationId}`;
+    const url =`${this.locationUrl}/search/findByLocationId?locationId=${locationId}`;
     return this.http.get<any>(url);
   }
 
