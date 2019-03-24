@@ -44,7 +44,7 @@ function push(url, obj){
             document.getElementById('thediv').insertAdjacentHTML('beforeend', data)
         }
     };
-    xhr.open('POST',localRDS+url, true);
+    xhr.open('POST',baseRDS+url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(obj));
 }
@@ -95,3 +95,11 @@ items.forEach((e) => {
 // push(itemsRDS,loc);
 //thediv
 
+/*
+Insert into officers(id, officer_id, superior_officer_id, location_id, username, password, first_name, last_name)
+Values(1,1,1, 1, 'the', 'doctor', 'Doctor', 'Who?'), 
+Insert into officers (id, officer_id, superior_officer_id, location_id, username, password, first_name, last_name)
+Values(2,2,1, 1, 'Boba', 'Fett', 'Boba', 'Fett')
+Insert into officers (id, officer_id, superior_officer_id, location_id, username, password, first_name, last_name)
+Values(3,3,2, 1, 'user', 'pass', 'Kylo', 'Ren, sucks')
+*/

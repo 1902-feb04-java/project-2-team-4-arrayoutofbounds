@@ -13,15 +13,16 @@ public class Officer
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	private long officerId;
 	private String rank;
 	private String firstName;
 	private String lastName;
-	private String userName;
-	private String passWord;
+	private String username;
+	private String password;
 	//these are all references to other (or this) tables
 	private int superiorOfficerId;
 	private int locationId;
-	private int armyDivisionId;
+//	private int armyDivisionId;
 
 	public Officer()
 	{}
@@ -79,28 +80,37 @@ public class Officer
 		this.locationId = locationId;
 	}
 
-	public int getArmyDivisionId() {
-		return armyDivisionId;
-	}
 
-	public void setArmyDivisionId(int armyDivisionId) {
-		this.armyDivisionId = armyDivisionId;
-	}
+//	public int getArmyDivisionId() {
+//		return armyDivisionId;
+//	}
+//
+//	public void setArmyDivisionId(int armyDivisionId) {
+//		this.armyDivisionId = armyDivisionId;
+//	}
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.username = userName;
 	}
 
 	public String getPassWord() {
-		return passWord;
+		return password;
 	}
 
 	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+		this.password = passWord;
+	}
+
+	public long getOfficerId() {
+		return officerId;
+	}
+
+	public void setOfficerId(long officerId) {
+		this.officerId = officerId;
 	}
 	
 }

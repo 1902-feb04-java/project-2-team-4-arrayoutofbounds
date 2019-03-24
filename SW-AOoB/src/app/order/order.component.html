@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <label>Id: </label>
     {{currentOrder.id }} 
 </div>
@@ -8,14 +8,15 @@
 </div>
 <div>
     <label>Order Authorized: </label>
-    <!-- {{currentOrder.isAuthorized }}   -->
+    {{currentOrder.isAuthorized }}  
+</div> -->
+<div class="heading">
+  <h3 style="left:5%">Items: </h3>
 </div>
-
-<div *ngIf="getCost()">
-  <h3>Items: </h3>
+<div class="itemList" *ngIf="getCost()">
     <ul>
         <li *ngFor="let item of currentOrder.itemsOrdered">
-          <span>{{item.model}} {{item.cost}}</span> 
+          <span>{{currentOrder.itemsMap.get(item.itemId)}} - {{item.model}} - {{item.cost}}</span> 
         </li>
       </ul>
 </div>
@@ -23,5 +24,8 @@
     <label>Total: </label>
     {{[getCost()]}} 
 </div>
-<button (click) = "submitOrder()" >Submit</button>
+<!-- <a routerLink='/confirmation'> -->
+  <button (click) = "submitOrder()" style="background-color:cadetblue"> Submit </button> 
+<!-- </a> -->
+<!-- (click) = "submitOrder()" >Submit -->
 

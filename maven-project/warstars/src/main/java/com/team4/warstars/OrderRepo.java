@@ -8,5 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin
 @RepositoryRestResource(collectionResourceRel="orders", path="orders")
 public interface OrderRepo extends CrudRepository<Order, Long> {
+	
 	Order findByOrderId(@Param("orderId")long id);
 }

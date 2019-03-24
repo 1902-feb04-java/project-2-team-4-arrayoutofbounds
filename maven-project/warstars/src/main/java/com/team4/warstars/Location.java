@@ -13,8 +13,8 @@ public class Location
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+//	private long locationId;
 	private String name;
-	private String parent;
 	
 	public long getId() {
 		return id;
@@ -28,10 +28,10 @@ public class Location
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getParent() {
-		return parent;
-	}
-	public void setMembershipGroup(String parent) {
-		this.parent = parent;
-	}
+//	public long getLocationId() {
+//		return locationId;
+//	}
+//	public void setLocationId(long locationId) {
+//		this.locationId = locationId;
+//	}
 }

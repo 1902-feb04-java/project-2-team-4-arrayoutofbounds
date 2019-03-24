@@ -13,6 +13,8 @@ public interface OfficerRepo extends CrudRepository<Officer, Long>
 {
 //	List<Reimbursement> findByDescription(@Param("desc")String description);
 	List<Officer> findByRank(@Param("rank")String r); //url search?key=value
-	Officer findByUserNameAndPassWord(@Param("userName") String u,@Param("passWord") String p);
+	Officer findByUsernameAndPassword(@Param("username") String u,@Param("password") String p);
+	Officer findByLocationId(@Param("locationId")int l);
+	Officer findByOfficerId(@Param("officerId")long id);
 //	void save();
 }

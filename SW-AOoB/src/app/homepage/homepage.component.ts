@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
@@ -8,13 +7,7 @@ import { Router } from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(public router: Router) { }
-
+  constructor() { }
   ngOnInit() {
-  }
-
-  logout(){
-    localStorage.removeItem('curerntUser');
-    this.router.navigate(['logout']);
   }
 }

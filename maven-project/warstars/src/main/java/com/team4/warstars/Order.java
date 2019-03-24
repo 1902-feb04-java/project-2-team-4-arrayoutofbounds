@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -22,6 +23,7 @@ public class Order
 	private long orderId;
 	private long userId;
 //	private Item[] itemsOrdered;
+	@Size(max=2048)
 	private String itemsOrdered;
 	private long cost;
 	private boolean authorizationRequired;
