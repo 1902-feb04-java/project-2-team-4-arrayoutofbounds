@@ -9,6 +9,7 @@ import { OfficersComponent } from '../officers/officers.component';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 import { LogoutService} from '../services/logout.service';
 import { BackService } from '../services/back.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventories',
@@ -26,11 +27,15 @@ export class InventoriesComponent implements OnInit {
     private inventoryService:InventoryService,
     private itemService:ItemService,
     private logoutService:LogoutService,
-    private backService:BackService
+    private backService:BackService,
+    public router:Router
   ) { }
   
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('officer'))
+    if (this.currentUser.rank == 'Emperor'){
+      this.router.navigate(['/high-inventory']);
+    }
     console.log(this.currentUser);
     console.log(this.currentUser.locationId);
     // console.log(this.inventory);

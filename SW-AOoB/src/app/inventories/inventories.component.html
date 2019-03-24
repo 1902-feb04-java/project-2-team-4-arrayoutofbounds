@@ -1,4 +1,4 @@
-<h3>Inventory at location: {{location.name}}</h3>
+<h3>Inventory at location: <!-- {{location.name}} --></h3>
 <span>Items Details:</span>
 <ul>
   <li *ngFor ="let item of items">
@@ -8,5 +8,5 @@
 
   </li>
 </ul>
-<a><button class='button' (click)= logout()>Logout</button></a>
-<!-- <a><button class='button' (click)= back()>Back</button></a> -->
+<a><button id='logout' class='button' (click)= logout()>Logout</button></a>
+<a><button id='back' class='button' (click)= back()>Back</button></a>

@@ -10,7 +10,7 @@ export class BackService {
     public router:Router
   ) { }
   homepageBack(): void{
-    this.router.navigate(['/homepage']);
+    this.router.navigate(['/home']);
   }
 }
 
