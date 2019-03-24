@@ -36,9 +36,9 @@ export class InventoryService {
     return this.http.get<any>(url);
   }
 
-  getInventory(inventoryid:number): Observable<Inventories>{
-    const url =`${this.localUrl}/search/findByLocationId?locationId=${inventoryid}`;
-    return this.http.get<Inventories>(url);
+  getInventory(inventoryid:number): Observable<any>{
+    const url =`${this.inventoryUrl}search/findByInventoryId?inventoryId=${inventoryid}`;
+    return this.http.get<any>(url);
   }
 
   addInventory(inventory:any): Observable<Inventories>{

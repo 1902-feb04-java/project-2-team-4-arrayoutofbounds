@@ -80,6 +80,7 @@ public class Officer
 		this.locationId = locationId;
 	}
 
+
 //	public int getArmyDivisionId() {
 //		return armyDivisionId;
 //	}
