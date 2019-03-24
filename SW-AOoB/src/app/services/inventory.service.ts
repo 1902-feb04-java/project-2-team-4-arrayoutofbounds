@@ -37,7 +37,7 @@ export class InventoryService {
   }
 
   getInventory(inventoryid:number): Observable<any>{
-    const url =`${this.inventoryUrl}search/findByInventoryId?inventoryId=${inventoryid}`;
+    const url =`${this.inventoryUrl}/search/findByInventoryId?inventoryId=${inventoryid}`;
     return this.http.get<any>(url);
   }
 

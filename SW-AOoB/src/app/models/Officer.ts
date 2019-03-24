@@ -6,7 +6,7 @@ export class Officer
     lastName:string;
     rank:string;
     superiorOfficer:number;
-    locationId:number;
+    locationid:number;
     userName:string;
     password:string;
 }

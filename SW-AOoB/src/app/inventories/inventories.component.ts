@@ -17,7 +17,7 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
 export class InventoriesComponent implements OnInit {
   currentUser:Officer;
   inventory: Inventories;
-  items:Item[] = [];
+  items:number[] = [];
   constructor(
     private inventoryService:InventoryService,
     private itemService:ItemService
@@ -25,8 +25,8 @@ export class InventoriesComponent implements OnInit {
   
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('officer'))
-    console.log(this.currentUser.locationId);
-    console.log(this.inventory);
+    console.log(this.currentUser);
+    console.log(this.currentUser.locationid);
     // this.inventoryService.update.subscribe((obj => {
     //   this.addItems(obj);
     // }))
@@ -40,11 +40,18 @@ export class InventoriesComponent implements OnInit {
   }
 
   getInventory(): void{
-    this.inventoryService.getInventory(this.currentUser.locationId)
+    this.inventoryService.getInventory(this.currentUser.locationid)
     .subscribe(inventory => {
       this.inventory = inventory;
+      console.log(this.inventory.items);
+      // this.items[0]=this.inventory.items.get(1)
+      this.inventory = new Inventories(inventory);
       console.log(this.inventory);
+      this.getItems(1)
     })
+  }
+  getItems(id:number):void{
+    console.log(this.inventory.items.get(id));
   }
   addInventory(inv:any): void {
     this.inventoryService.addInventory(inv).subscribe(() =>{
