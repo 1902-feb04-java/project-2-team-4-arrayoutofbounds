@@ -102,7 +102,7 @@ export class OrderComponent implements OnInit {
       cost: this.getCost(), 
       itemsOrdered: JSON.stringify(indexArr), 
       authorizationRequired: this.getRestrictedStatus(),
-      orderId: Math.random() * 1000000
+      orderId:Math.round( Math.random() * 1000000)
     }
     localStorage.setItem('currentOrder', JSON.stringify(slimOrder))
 

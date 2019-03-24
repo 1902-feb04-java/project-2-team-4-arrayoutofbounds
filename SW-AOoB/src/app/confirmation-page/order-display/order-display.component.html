@@ -1,0 +1,39 @@
+<!-- <p>
+  order-display works!
+</p>
+<div class="itemList">
+  {{currentOrder.orderId}}
+    <ul *ngIf="currentOrder | async">
+        <li *ngFor="let itemO of currentOrder.itemsOrdered">
+          <span>{{itemMap.get(itemO.itemId)}} - {{itemO.model}} - {{itemO.cost}}</span> 
+        </li>
+      </ul>
+</div> -->
+
+
+  <!-- <div *ngIf="curentOrder"> -->
+      <h3>Order Details</h3>
+  
+      <p>
+         <b>Order #:</b> {{ currentOrder.orderId }} <br>
+         <b>User #:</b> {{ currentOrder.userId }} <br>
+         <b>Total :</b> ${{ currentOrder.cost }} <br>
+         <b>Restricted:</b> {{ currentOrder.authorizationRequired }} <br>
+      </p>
+      <!-- <div *ngIf="{{currentOrder.authorizationRequired}}; else elseBlock">Authorized: Yes <br></div>
+      <ng-template #elseBlock>Authorized: No <br></ng-template> -->
+      
+      
+       
+      <h3>Item Details:</h3>
+        <p *ngFor="let details of currentOrder.itemsOrdered; let i = index; ">
+            <b>Item #:</b> {{ currentOrder.itemsOrdered[i].itemId }} <br>
+            <b>Category:</b> {{ currentOrder.itemsOrdered[i].category }} <br>
+            <b>Class :</b> {{ currentOrder.itemsOrdered[i].classification }} <br>
+            <b>Model:</b> {{ currentOrder.itemsOrdered[i].model }} <br>
+            <b>Item Cost: </b> {{currentOrder.itemsOrdered[i].cost }} <br>
+            <b>Item Amount: </b> {{itemMap.get(details.itemId) }} <br>
+      
+        </p>
+      <button (click)="goBack()">BACK</button>
+      
