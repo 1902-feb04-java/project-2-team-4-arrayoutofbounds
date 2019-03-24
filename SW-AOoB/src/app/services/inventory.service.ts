@@ -34,7 +34,7 @@ export class InventoryService {
   // }
 
   getLocation(locationId:number): Observable<any>{
-    const url =`${this.localUrl}/search/findByLocationId?locationId=${locationId}`;
+    const url =`${this.locationUrl}/search/findByLocationId?locationId=${locationId}`;
     return this.http.get<any>(url);
   }
 
@@ -44,11 +44,12 @@ export class InventoryService {
   }
 
   addInventory(inventory:any): Observable<Inventories>{
-    return this.http.post<Inventories>(this.localInvUrl,inventory,this.httpOptions)
-    // .pipe(
-    //   tap(_ => this.log(`Added to inventory #${this.inventories.id}`)),
-    //   catchError(this.handleError<any>(`addItemsToInventory`))
-    // );
+    return this.http.post<Inventories>(this.inventoryUrl,inventory,this.httpOptions)
+   
+  }
+  updateInventory(inventory:any, link:string): Observable<Inventories>{
+    return this.http.put<Inventories>(link,inventory,this.httpOptions)
+   
   }
   // private handleError<T> (operation = 'operation', result?: T){
   //   return (error: any): Observable<T> => {
