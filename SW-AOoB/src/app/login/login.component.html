@@ -1,6 +1,12 @@
-<h2>Login</h2>
-<div>
-  <input type="text" #username id="username" placeholder="username"/><br>
-  <input type="password" #password id="password" placeholder="password"/>
-</div>
-<a routerLink = "/home"><button>Submit</button></a>
+<div class='login'>
+  <h2 class='title'>Login</h2>
+  <div>
+    <input class='un' type="text" name="username" #username placeholder="username"/><br>
+    <input class='pass' type="password" name="password" #password placeholder="password"/>
+  </div>
+  <a><button class='button' (click)= getUser(username.value,password.value)>Submit</button></a>
+  
+  
+  <div id="message" style="color:red; display:none" ><p>Bad username/password</p></div>
+  
+  </div>
