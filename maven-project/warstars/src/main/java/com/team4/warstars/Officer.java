@@ -72,13 +72,14 @@ public class Officer
 		this.superiorOfficerId = superiorOfficerId;
 	}
 
-	public int getlocationid() {
+	public int getLocationId() {
 		return locationId;
 	}
 
-	public void setlocationid(int locationid) {
-		this.locationId = locationid;
+	public void setLocationId(int locationId) {
+		this.locationId = locationId;
 	}
+
 
 //	public int getArmyDivisionId() {
 //		return armyDivisionId;

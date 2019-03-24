@@ -21,7 +21,7 @@ export class InventoryService {
   private officersUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers';
   private locationUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/locations';
   private inventoryUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/inventories';
-  
+  private localUrl = 'http://localhost:5000/inventories';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

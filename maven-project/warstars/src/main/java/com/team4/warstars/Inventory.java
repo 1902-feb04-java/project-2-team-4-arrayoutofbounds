@@ -27,7 +27,6 @@ public class Inventory {
 	public long getId() {
 		return id;
 	}
-
 	public long getinventoryid() {
 		return inventoryId;
 	}
