@@ -20,5 +20,7 @@
       <b>Class :</b> {{ currentOrder.itemsOrdered[i].classification }} <br>
       <b>Model:</b> {{ currentOrder.itemsOrdered[i].model }} <br>
       <b>Item Cost: </b> {{currentOrder.itemsOrdered[i].cost }} <br>
+      <b>Item Amount: </b> {{itemMap.get(details.itemId) }} <br>
+
   </p>
 <button (click)="goBack()">BACK</button>

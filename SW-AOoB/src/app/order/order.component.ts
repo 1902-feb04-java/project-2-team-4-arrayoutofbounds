@@ -87,31 +87,32 @@ export class OrderComponent implements OnInit {
   submitOrder(): void
   {
 
-  //   let indexArr = [];
+    let indexArr = [];
 
-  //   for(let i = 0; i< this.currentOrder.itemsOrdered.length; i++)
-  //   {
-  //     let item = this.currentOrder.itemsOrdered[i];
-  //     if(item != null)
-  //     {
-  //       indexArr[i] =[];
-  //       indexArr[i].push( this.currentOrder.itemsMap.get(item.itemId), item)
-  //     }
-  //   }
-  //   console.log(indexArr)
-  //   let slimOrder = {
-  //     userId: this.user.officerId, 
-  //     cost: this.getCost(), 
-  //     itemsOrdered: JSON.stringify(this.currentOrder.itemsOrdered), 
-  //     authorizationRequired: this.getRestrictedStatus()
-  //   }
+    for(let i = 0; i< this.currentOrder.itemsOrdered.length; i++)
+    {
+      let item = this.currentOrder.itemsOrdered[i];
+      if(item != null)
+      {
+        // indexArr[i] =[];
+        indexArr.push({qty: this.currentOrder.itemsMap.get(item.itemId), itemId: item.itemId})
+      }
+    }
+    console.log(indexArr)
+    let slimOrder = {
+      userId: this.user.officerId, 
+      cost: this.getCost(), 
+      itemsOrdered: JSON.stringify(indexArr), 
+      authorizationRequired: this.getRestrictedStatus(),
+      orderId: Math.random() * 1000000
+    }
       
-  //   // this.orderService.currentOrder.next(this.currentOrder);
+    // this.orderService.currentOrder.next(this.currentOrder);
     
-  //   this.orderService.addOrder(slimOrder).subscribe(() => {
-  //     console.log('Order Submitted')
-  //     console.log(slimOrder)
-  //     this.newOrder();
-  //   })
+    this.orderService.addOrder(slimOrder).subscribe(() => {
+      console.log('Order Submitted')
+      console.log(slimOrder)
+      this.newOrder();
+    })
   }
 }

@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { Item } from '../models/Item';
 import { map, subscribeOn } from 'rxjs/operators';
 import { textBinding } from '@angular/core/src/render3';
+import { ItemService } from '../services/item.service';
 
 let ORDER_DETAILS = [];
 
@@ -21,11 +22,13 @@ let displayAuthorization = document.getElementById('auth-id');
 export class OrderHistoryDetailComponent implements OnInit  {
  ITEM_DETAILS: Item[] = null;
  @Input() order:Order; 
+ itemMap = new Map<number, number>();
 
   constructor(
     private route: ActivatedRoute,
     private location:Location,
-    private orderService:OrderService
+    private orderService:OrderService,
+    private itemService: ItemService
     ) { }
     
   currentOrder:Order = new Order(1);
@@ -72,13 +75,16 @@ export class OrderHistoryDetailComponent implements OnInit  {
   }
 
   parseData(ITEM_DETAILS): Item[]{
-    // let items = [];
+    let items = [];
     let data = JSON.parse(ITEM_DETAILS as unknown as string);
-    console.log("Data: ");
-    console.log(data);
-    console.log("ITEM DETAILS:");
-    console.log(ITEM_DETAILS);
-    return data  
+   for(let i =0; i< data.length; i++)
+   {
+    this.itemMap.set(data[i].itemId, data[i].qty)
+    this.itemService.getItem( data[i].itemId).subscribe(i => {
+    items.push(new Item(i));
+    })    
+   }
+    return items;
 }
 
 }
