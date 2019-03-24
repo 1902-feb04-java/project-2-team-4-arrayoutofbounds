@@ -17,7 +17,9 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
 export class InventoriesComponent implements OnInit {
   currentUser:Officer;
   inventory: Inventories;
-  items:Item[] = [];
+  items:Item[] //= [];
+  itemMap = new Map<number, number>();
+
   constructor(
     private inventoryService:InventoryService,
     private itemService:ItemService
@@ -26,8 +28,8 @@ export class InventoriesComponent implements OnInit {
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('officer'))
 
-    console.log(this.currentUser.locationId);
-    console.log(this.inventory);
+    console.log(this.currentUser);
+    // console.log(this.inventory);
     // this.inventoryService.update.subscribe((obj => {
     //   this.addItems(obj);
     // }))
@@ -45,6 +47,9 @@ export class InventoriesComponent implements OnInit {
     .subscribe(inventory => {
       this.inventory = inventory;
       console.log(this.inventory);
+
+      this.items = this.parseData(this.inventory.items)
+
     })
   }
   addInventory(inv:any): void {
@@ -52,6 +57,25 @@ export class InventoriesComponent implements OnInit {
       console.log(inv)
     })
   }
+
+  parseData(ITEM_DETAILS): Item[]{
+    let items = [];
+    // console.log(ITEM_DETAILS)
+    let data = JSON.parse(ITEM_DETAILS);
+    console.log(data)
+
+
+   for(let i =0; i< data.length; i++)
+   {
+    this.itemMap.set(data[i].itemId, data[i].qty)
+    this.itemService.getItem( data[i].itemId).subscribe(i => {
+      console.log(i)
+      items.push(new Item(i));
+    })    
+   }
+   console.log(items)
+    return items;
+}
   // getItems():Item[]{
   //   let items:Item[] = [];
   //   this.inventory.items.forEach((v,k,m)=>{

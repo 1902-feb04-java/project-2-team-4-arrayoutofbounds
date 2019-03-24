@@ -4,3 +4,12 @@
     <span>inventory id: {{inventory.id}} items map: {{inventory.items}} location Id: {{inventory.locationId}}</span>
   </li>
 </ul>
+
+<ul>
+  <li *ngFor ="let item of items">
+    <span>
+      {{item.model}} - {{itemMap.get(item.itemId)}}
+    </span>
+
+  </li>
+</ul>
