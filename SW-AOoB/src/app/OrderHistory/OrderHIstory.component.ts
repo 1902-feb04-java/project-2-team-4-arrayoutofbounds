@@ -67,6 +67,7 @@ export class OrderHistoryComponent {
       this.dataSource = new MatTableDataSource<Order>(ORDER_DATA);
     })
   }
+  
   parseData():void{
     let items;
     ORDER_DATA.forEach(od =>{
