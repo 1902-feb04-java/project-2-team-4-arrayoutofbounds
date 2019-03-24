@@ -62,11 +62,12 @@ export class OrderHistoryComponent {
   ngOnInit() {
     this.orderService.getOrders().subscribe((orders) =>{
       ORDER_DATA = orders._embedded.orders;
-      //this.parseData();
+      this.parseData();
       console.log(ORDER_DATA)
       this.dataSource = new MatTableDataSource<Order>(ORDER_DATA);
     })
   }
+  
   parseData():void{
     let items;
     ORDER_DATA.forEach(od =>{

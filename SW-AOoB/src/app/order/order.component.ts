@@ -14,7 +14,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OrderComponent implements OnInit {
   user:Officer;
-  currentItem:Item;
+  currentOrder:Order 
+  // currentItem:Item;
+
   constructor(
     private itemService:ItemService,
      private orderService:OrderService,
@@ -32,19 +34,17 @@ export class OrderComponent implements OnInit {
       this.addItem(obj);
       // console.log(obj)
     }))
-  }
-  currentOrder:Order 
- 
+  } 
   addItem(item:any):void{
     this.currentOrder.itemsMap.set(item.itemId, item.qty) //add item to map
     this.currentOrder.itemsOrdered = this.getItems(); //return array from map
   }
 
-  fetchItem(id:number):void{
-    this.itemService.getItem(id).subscribe(it => {
-      this.currentItem = it;
-    })
-  }
+  // fetchItem(id:number):void{
+  //   this.itemService.getItem(id).subscribe(it => {
+  //     this.currentItem = it;
+  //   })
+  // }
   getItems():Item[]{
     let items:Item[] = [];
     this.currentOrder.itemsMap.forEach((v,k,m)=>{
@@ -73,8 +73,6 @@ export class OrderComponent implements OnInit {
     return cost
   }
   newOrder(): void{
-   
-  //  console.log(user)
     this.currentOrder = new Order(this.user.officerId);
   }
   
@@ -88,27 +86,25 @@ export class OrderComponent implements OnInit {
  
   submitOrder(): void
   {
+
     let indexArr = [];
-    // for(let i = 0; i< this.currentOrder.itemsMap.size; i++)
-    // {
-    //   indexArr[i] = [];
-    // }
-    // this.currentOrder.itemsOrdered.forEach((i) => {
+
     for(let i = 0; i< this.currentOrder.itemsOrdered.length; i++)
     {
       let item = this.currentOrder.itemsOrdered[i];
       if(item != null)
       {
-        indexArr[i] =[];
-        indexArr[i].push( this.currentOrder.itemsMap.get(item.itemId), item)
+        // indexArr[i] =[];
+        indexArr.push({qty: this.currentOrder.itemsMap.get(item.itemId), itemId: item.itemId})
       }
     }
     console.log(indexArr)
     let slimOrder = {
       userId: this.user.officerId, 
       cost: this.getCost(), 
-      itemsOrdered: JSON.stringify(this.currentOrder.itemsOrdered), 
-      authorizationRequired: this.getRestrictedStatus()
+      itemsOrdered: JSON.stringify(indexArr), 
+      authorizationRequired: this.getRestrictedStatus(),
+      orderId: Math.random() * 1000000
     }
       
     // this.orderService.currentOrder.next(this.currentOrder);
@@ -119,22 +115,4 @@ export class OrderComponent implements OnInit {
       this.newOrder();
     })
   }
-   // getOrderById(){
-  //   const orderId = + this.route.snapshot.paramMap.get('id');
-  //     console.log(orderId);
-  //     this.orderService.getOrderById(orderId)
-  //       .subscribe((order) => {
-  //         this.parseData()
-  //       })
-  // }
-
-  // parseData(){
-
-  //   let items;
-  //     items = JSON.parse(this.currentOrder.itemsMap as unknown as string);
-  //     items.array.forEach(element => {
-  //       // ITEM_DETAILS.push(new Item(element))
-  //     });
-  //     // ITEM_DETAILS = items;
-  // }
 }

@@ -17,7 +17,9 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
 export class InventoriesComponent implements OnInit {
   currentUser:Officer;
   inventory: Inventories;
-  items:number[] = [];
+  items:Item[] //= [];
+  itemMap = new Map<number, number>();
+  location:Location;
   constructor(
     private inventoryService:InventoryService,
     private itemService:ItemService
@@ -25,8 +27,9 @@ export class InventoriesComponent implements OnInit {
   
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('officer'))
-    console.log(this.currentUser);
-    console.log(this.currentUser.locationid);
+    // console.log(this.currentUser);
+    // console.log(this.currentUser.locationid);
+    // console.log(this.inventory);
     // this.inventoryService.update.subscribe((obj => {
     //   this.addItems(obj);
     // }))
@@ -36,6 +39,7 @@ export class InventoriesComponent implements OnInit {
     //   items: {key: 1, a: 1}
     // }
     // this.addInventory(obj);
+    this.getLocation();
     this.getInventory();
   }
 
@@ -43,21 +47,50 @@ export class InventoriesComponent implements OnInit {
     this.inventoryService.getInventory(this.currentUser.locationid)
     .subscribe(inventory => {
       this.inventory = inventory;
-      console.log(this.inventory.items);
+      // console.log(this.inventory.items);
       // this.items[0]=this.inventory.items.get(1)
-      this.inventory = new Inventories(inventory);
-      console.log(this.inventory);
-      this.getItems(1)
+      // console.log(this.inventory);
+      //this.getItems(1)
+
+      this.items = this.parseData(this.inventory.items)
+
     })
   }
-  getItems(id:number):void{
-    console.log(this.inventory.items.get(id));
-  }
+  // getItems(id:number):void{
+  //   console.log(this.inventory.items.get(id));
+  // }
   addInventory(inv:any): void {
     this.inventoryService.addInventory(inv).subscribe(() =>{
-      console.log(inv)
+      // console.log(inv)
     })
   }
+
+  getLocation():void{
+    this.inventoryService.getLocation(this.currentUser.locationid)
+    .subscribe(location => {
+      this.location = location;
+      // console.log(location);
+    })
+  }
+
+  parseData(ITEM_DETAILS): Item[]{
+    let items = [];
+    // console.log(ITEM_DETAILS)
+    let data = JSON.parse(ITEM_DETAILS);
+    // console.log(data)
+
+
+   for(let i =0; i< data.length; i++)
+   {
+    this.itemMap.set(data[i].itemId, data[i].qty)
+    this.itemService.getItem( data[i].itemId).subscribe(i => {
+      // console.log(i)
+      items.push(new Item(i));
+    })    
+   }
+  //  console.log(items)
+    return items;
+}
   // getItems():Item[]{
   //   let items:Item[] = [];
   //   this.inventory.items.forEach((v,k,m)=>{

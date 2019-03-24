@@ -1,6 +1,10 @@
-<h3>Inventory</h3>
+<h3>Inventory at location: {{location.name}}</h3>
+<span>Items Details:</span>
 <ul>
-  <li *ngFor="let inventory of inventories">
-    <span>inventory id: {{inventory.id}} items map: {{inventory.items}} location Id: {{inventory.locationId}}</span>
+  <li *ngFor ="let item of items">
+    <span>
+      Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
+    </span>
+
   </li>
 </ul>

@@ -32,7 +32,10 @@
 <!--ID column-->
 <ng-container matColumnDef="orderId">
   <mat-header-cell *matHeaderCellDef>Order No.</mat-header-cell>
-  <mat-cell *matCellDef="let element">{{element.orderId}}</mat-cell>
+  <mat-cell *matCellDef="let element">
+      <a routerLink = "/detail/{{element.orderId}}">{{element.orderId}}</a>
+
+  </mat-cell>
 </ng-container>
 
 <!--User column-->
@@ -45,9 +48,7 @@
 <ng-container matColumnDef="itemsOrdered">
     <mat-header-cell *matHeaderCellDef>Items Ordered</mat-header-cell>
     <mat-cell *matCellDef="let element">
-        <a routerLink = "/detail/{{element.orderId}}">
-          <span class="badge">{{element.itemsOrdered.length}}</span> 
-        </a>
+          <span>{{element.itemsOrdered.length}}</span> 
     </mat-cell>
 </ng-container>
 
