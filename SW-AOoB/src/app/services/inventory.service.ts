@@ -21,7 +21,7 @@ export class InventoryService {
   private officersUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers';
   private locationUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/locations';
   private inventoryUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/inventories';
-  
+  private localUrl = 'http://localhost:5000/inventories';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -32,13 +32,13 @@ export class InventoryService {
   // }
 
   getLocation(locationId:number): Observable<any>{
-    const url =`${this.locationUrl}/search/findbyLocationId?LocationId=${locationId}`;
+    const url =`${this.locationUrl}/search/findByLocationId?locationId=${locationId}`;
     return this.http.get<any>(url);
   }
 
-  getInventory(inventoryid:number): Observable<any>{
-    const url =`${this.inventoryUrl}/search/findbyInventoryid?Inventoryid=${inventoryid}`;
-    return this.http.get<any>(url);
+  getInventory(inventoryid:number): Observable<Inventories>{
+    const url =`${this.localUrl}/search/findByLocationId?locationId=${inventoryid}`;
+    return this.http.get<Inventories>(url);
   }
 
   addInventory(inventory:any): Observable<Inventories>{

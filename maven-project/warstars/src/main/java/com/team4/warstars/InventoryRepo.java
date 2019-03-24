@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource(collectionResourceRel = "inventories", path = "inventories")
 public interface InventoryRepo extends CrudRepository<Inventory, Long> {
 	List<Inventory> findByLocationId(@Param("locationId") int L);
-	Inventory findByInventoryid(@Param("inventoryid") long i);
+	List<Inventory> findById(@Param("id") long i);
 }

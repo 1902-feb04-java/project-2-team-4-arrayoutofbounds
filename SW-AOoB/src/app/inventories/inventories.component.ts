@@ -25,6 +25,7 @@ export class InventoriesComponent implements OnInit {
   
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('officer'))
+    console.log(this.currentUser.locationId);
     console.log(this.inventory);
     // this.inventoryService.update.subscribe((obj => {
     //   this.addItems(obj);
@@ -36,14 +37,13 @@ export class InventoriesComponent implements OnInit {
     // }
     // this.addInventory(obj);
     this.getInventory();
-    console.log(this.inventory);
   }
 
   getInventory(): void{
     this.inventoryService.getInventory(this.currentUser.locationId)
     .subscribe(inventory => {
       this.inventory = inventory;
-      console.log(inventory);
+      console.log(this.inventory);
     })
   }
   addInventory(inv:any): void {
