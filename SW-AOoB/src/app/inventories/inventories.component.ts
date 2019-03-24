@@ -25,6 +25,7 @@ export class InventoriesComponent implements OnInit {
   
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('officer'))
+
     console.log(this.currentUser.locationId);
     console.log(this.inventory);
     // this.inventoryService.update.subscribe((obj => {
