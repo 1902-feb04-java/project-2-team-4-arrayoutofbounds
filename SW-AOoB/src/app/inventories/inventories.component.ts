@@ -7,6 +7,8 @@ import { OfficerService } from '../services/officer.service';
 import { Officer } from '../models/Officer';
 import { OfficersComponent } from '../officers/officers.component';
 import { invalid } from '@angular/compiler/src/render3/view/util';
+import { LogoutService} from '../services/logout.service';
+import { BackService } from '../services/back.service';
 
 @Component({
   selector: 'app-inventories',
@@ -22,7 +24,9 @@ export class InventoriesComponent implements OnInit {
   location:Location;
   constructor(
     private inventoryService:InventoryService,
-    private itemService:ItemService
+    private itemService:ItemService,
+    private logoutService:LogoutService,
+    private backService:BackService
   ) { }
   
   ngOnInit() {
@@ -93,8 +97,15 @@ export class InventoriesComponent implements OnInit {
     return items;
 }
 
-  addItems(items:any): void{
-    this.inventory.items.set(items.itemId,items.qty)
+  // addItems(items:any): void{
+  //   this.inventory.items.set(items.itemId,items.qty)
+  // }
+
+  logout():void {
+    this.logoutService.logout();
+  }
+  back():void{
+    this.backService.homepageBack();
   }
  
 }

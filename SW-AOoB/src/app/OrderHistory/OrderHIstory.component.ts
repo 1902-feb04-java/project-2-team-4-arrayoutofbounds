@@ -5,7 +5,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material';
 import { Item } from '../models/Item'
 import { OrderService } from '../services/order.service';
-
+import { LogoutService} from '../services/logout.service';
+import { BackService } from '../services/back.service';
 
 let ORDER_DATA: Order[] = [
 //   {id: 1,  user: 1000, itemsOrdered: [{ id: 1, category: "Weapon", classification:"", model:"x", cost:50 }],
@@ -57,7 +58,7 @@ export class OrderHistoryComponent {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.userId + 1}`;
   }
 
-  constructor(private orderService:OrderService) { }
+  constructor(private orderService:OrderService,private logoutService:LogoutService,private backService:BackService) { }
 
   ngOnInit() {
     this.orderService.getOrders().subscribe((orders) =>{
@@ -76,6 +77,12 @@ export class OrderHistoryComponent {
       od.itemsOrdered = items;
     })
 
+  }
+  logout():void {
+      this.logoutService.logout();
+  }
+  back():void{
+    this.backService.homepageBack();
   }
 }
 

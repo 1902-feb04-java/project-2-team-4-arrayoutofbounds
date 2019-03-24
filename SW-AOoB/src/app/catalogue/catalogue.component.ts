@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Item} from '../models/Item';
 import {ItemService} from '../services/item.service';
 import { OrderService } from '../services/order.service';
+import { LogoutService} from '../services/logout.service';
+import { BackService } from '../services/back.service';
 
 @Component({
   selector: 'app-catalogue',
@@ -10,7 +12,7 @@ import { OrderService } from '../services/order.service';
 })
 
 export class CatalogueComponent implements OnInit{
-  constructor(private itemService:ItemService, private orderService:OrderService){}
+  constructor(private itemService:ItemService, private orderService:OrderService,private logoutService:LogoutService,private backService:BackService){}
   weapon_Data:Item[];
   vehicle_Data:Item[];
   supplies_Data:Item[];
@@ -53,6 +55,12 @@ export class CatalogueComponent implements OnInit{
   addItem(itemId:number, qty:number): void{
     console.log(`called with ${itemId} and ${qty}`)
     this.orderService.update.next({'itemId':itemId, 'qty':qty})
+  }
+  logout():void {
+    this.logoutService.logout();
+  }
+  back():void{
+    this.backService.homepageBack();
   }
 }
 
