@@ -22,6 +22,8 @@ export class InventoryService {
   private locationUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/locations';
   private inventoryUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/inventories';
   private localUrl = 'http://localhost:5000/locations';
+  private localInvUrl = 'http://localhost:5000/invntories';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -42,7 +44,7 @@ export class InventoryService {
   }
 
   addInventory(inventory:any): Observable<Inventories>{
-    return this.http.post<Inventories>(this.inventoryUrl,inventory,this.httpOptions)
+    return this.http.post<Inventories>(this.localInvUrl,inventory,this.httpOptions)
     // .pipe(
     //   tap(_ => this.log(`Added to inventory #${this.inventories.id}`)),
     //   catchError(this.handleError<any>(`addItemsToInventory`))

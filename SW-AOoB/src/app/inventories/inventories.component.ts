@@ -27,8 +27,8 @@ export class InventoriesComponent implements OnInit {
   
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('officer'))
-    // console.log(this.currentUser);
-    // console.log(this.currentUser.locationid);
+    console.log(this.currentUser);
+    console.log(this.currentUser.locationId);
     // console.log(this.inventory);
     // this.inventoryService.update.subscribe((obj => {
     //   this.addItems(obj);
@@ -44,14 +44,9 @@ export class InventoriesComponent implements OnInit {
   }
 
   getInventory(): void{
-    this.inventoryService.getInventory(this.currentUser.locationid)
+    this.inventoryService.getInventory(this.currentUser.locationId)
     .subscribe(inventory => {
       this.inventory = inventory;
-      // console.log(this.inventory.items);
-      // this.items[0]=this.inventory.items.get(1)
-      // console.log(this.inventory);
-      //this.getItems(1)
-
       this.items = this.parseData(this.inventory.items)
 
     })
@@ -59,14 +54,20 @@ export class InventoriesComponent implements OnInit {
   // getItems(id:number):void{
   //   console.log(this.inventory.items.get(id));
   // }
-  addInventory(inv:any): void {
-    this.inventoryService.addInventory(inv).subscribe(() =>{
-      // console.log(inv)
-    })
-  }
+  // addInventory(): void {
+  //   let newInv: Inventories = {
+  //     id:this.inventory.id,
+  //     inventoryid:this.inventory.inventoryid,
+  //     locationId: this.inventory.locationId,
+  //     items: this.inventory.items + this.itemMap.set();
+  //   } 
+  //   this.inventoryService.addInventory(newInv).subscribe(() =>{
+  //     // console.log(inv)
+  //   })
+  // }
 
   getLocation():void{
-    this.inventoryService.getLocation(this.currentUser.locationid)
+    this.inventoryService.getLocation(this.currentUser.locationId)
     .subscribe(location => {
       this.location = location;
       // console.log(location);
@@ -91,23 +92,9 @@ export class InventoriesComponent implements OnInit {
   //  console.log(items)
     return items;
 }
-  // getItems():Item[]{
-  //   let items:Item[] = [];
-  //   this.inventory.items.forEach((v,k,m)=>{
-  //     if(v>0)
-  //     {
-  //       this.itemService.getItem(k).subscribe((item) => {
-  //         let itemOnly = new Item(item)
-  //         items.push(itemOnly);
-  //         console.log(items)
-  //       })
-  //     }
-  //   })
-  //   return items;
-  // }
 
-  // addItems(items:any): void{
-  //   this.inventory.items.set(items.itemId,items.qty)
-  // }
+  addItems(items:any): void{
+    this.inventory.items.set(items.itemId,items.qty)
+  }
  
 }
