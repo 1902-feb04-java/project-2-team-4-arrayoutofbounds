@@ -21,7 +21,7 @@ public class Officer
 	private String password;
 	//these are all references to other (or this) tables
 	private int superiorOfficerId;
-	private int locationid;
+	private int locationId;
 //	private int armyDivisionId;
 
 	public Officer()
@@ -73,11 +73,11 @@ public class Officer
 	}
 
 	public int getlocationid() {
-		return locationid;
+		return locationId;
 	}
 
 	public void setlocationid(int locationid) {
-		this.locationid = locationid;
+		this.locationId = locationid;
 	}
 
 //	public int getArmyDivisionId() {

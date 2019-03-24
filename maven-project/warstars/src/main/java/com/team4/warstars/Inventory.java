@@ -14,7 +14,7 @@ public class Inventory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private long inventoryid;
+	private long inventoryId;
 	private int locationId;
 	//private String personnel[];
 	@Column(length=2048)
@@ -29,11 +29,11 @@ public class Inventory {
 	}
 
 	public long getinventoryid() {
-		return inventoryid;
+		return inventoryId;
 	}
 
 	public void setinventoryid(long inventoryid) {
-		this.inventoryid = inventoryid;
+		this.inventoryId = inventoryid;
 	}
 
 	public void setId(long id) {
