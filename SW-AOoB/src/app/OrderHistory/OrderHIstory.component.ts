@@ -75,7 +75,6 @@ export class OrderHistoryComponent {
       items = JSON.parse(od.itemsOrdered as unknown as string)
       od.itemsOrdered = items;
     })
-
   }
 }
 

@@ -4,6 +4,8 @@ import { Observable, of, Subject} from 'rxjs';
 import { Inventories } from '../models/Inventories';
 import { catchError,tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
+import { error } from 'protractor';
+import { errorHandler } from '@angular/platform-browser/src/browser';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,10 @@ export class InventoryService {
     private http: HttpClient,
     private messageService:MessageService
   ) { }
-  // private log(message:string){
-  //   this.messageService.add(`OrderService: ${message}`);
-  // }
+
+  private log(message:string){
+    this.messageService.add(`InventoryService: ${message}`);
+  }
   private officersUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers';
   private locationUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/locations';
   private inventoryUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/inventories';
@@ -31,13 +34,22 @@ export class InventoryService {
   //   return this.http.get<any>(url);
   // }
 
+  //Get All inside Inventories 
+  getInventories(): Observable<any>{
+    return this.http.get<any>(this.inventoryUrl)
+    .pipe(
+        tap(_ => this.log(`Fetched inventories`)),
+        catchError(this.handleError<any>(`getInventories`,[])),
+    )
+  }
+
   getLocation(locationId:number): Observable<any>{
     const url =`${this.locationUrl}/search/findByLocationId?locationId=${locationId}`;
     return this.http.get<any>(url);
   }
 
   getInventory(inventoryid:number): Observable<any>{
-    const url =`${this.inventoryUrl}search/findByInventoryId?inventoryId=${inventoryid}`;
+    const url =`${this.inventoryUrl}/search/findByInventoryId?inventoryId=${inventoryid}`;
     return this.http.get<any>(url);
   }
 
@@ -48,17 +60,25 @@ export class InventoryService {
     //   catchError(this.handleError<any>(`addItemsToInventory`))
     // );
   }
-  // private handleError<T> (operation = 'operation', result?: T){
-  //   return (error: any): Observable<T> => {
 
-  //     //send error to remote logging infrastructure
-  //     console.error(error);
+      /*
+  * Handle Http operation that failed.
+  * Allow app to continue.
+  * @param operation - name of the operation that failed.
+  * @param result - optional value to return as the observable result.
+  */
 
-  //     //better job of transforming error for user consumption
-  //     this.log(`${operation} failed: ${error.message}`);
+ private handleError<T> (operation = 'operation', result?: T){
+  return (error: any): Observable<T> => {
 
-  //     //Let the app keep running by returning an empty result
-  //     return of(result as T);
-  //   };
-  // }
+    //send error to remote logging infrastructure
+    console.error(error);
+
+    //better job of transforming error for user consumption
+    this.log(`${operation} failed: ${error.message}`);
+
+    //Let the app keep running by returning an empty result
+    return of(result as T);
+  };
+}
 }
