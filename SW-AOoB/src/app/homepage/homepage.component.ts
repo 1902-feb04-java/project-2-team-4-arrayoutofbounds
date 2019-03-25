@@ -6,10 +6,11 @@ import { Officer } from '../models/Officer';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  officer: Officer
+
+  user:Officer;
   constructor() { }
   ngOnInit() {
-    this.officer = JSON.parse(localStorage.getItem('officer'))
-    console.log(this.officer)
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user)
   }
 }

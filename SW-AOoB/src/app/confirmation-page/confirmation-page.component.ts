@@ -5,6 +5,7 @@ import { Item } from '../models/Item';
 import { ItemService } from '../services/item.service';
 import { Inventories } from '../models/Inventories';
 import { InventoryService } from '../services/inventory.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirmation-page',
@@ -17,6 +18,7 @@ export class ConfirmationPageComponent implements OnInit {
     private orderService:OrderService, 
     private itemService:ItemService,
     private inventoryService: InventoryService,
+    private router:Router
     ) { }
   inventory:Inventories;
   itemsOrderedIds:string;
@@ -125,6 +127,7 @@ export class ConfirmationPageComponent implements OnInit {
     this.inventoryService.updateInventory(slinventory, this.link).subscribe(() =>{
       console.log(slinventory)
     })
+    this.router.navigate(['/home']);
   }
-  
+ 
 }
