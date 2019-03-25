@@ -1,8 +1,10 @@
 <div class='officerdiv'>
-<h2>Imperial Officers</h2>
+<h2>Current User info:</h2>
 <ul>
-  <li *ngFor="let officer of officers">
-    <span>{{officer.firstName}}</span> {{officer.rank}} id: {{officer.id}}
+  <li>
+    <span>First name: {{user.firstName}} <br> Last name: {{user.lastName}} <br> Rank:{{user.rank}} 
+    <br> Superiror Officer Id: {{user.superiorOfficerId}} <br> Location id: {{user.locationId}}
+  </span> 
   </li>
 </ul>
 <app-back-button></app-back-button>

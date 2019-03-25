@@ -11,6 +11,14 @@ export class OfficersComponent implements OnInit
 {
   constructor(private officerService:OfficerService) { }
   officers: Officer[];
+  user:Officer;
+  officer:Officer;
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'))
+    console.log(this.user);
+    console.log(this.user.officerId);
+    // this.getOfficers();
+   }
   // loc:Location = {id:1, name: "Valley of Bones", membershipGroup: 1}
   //currentOfficer: Officer = {id: 1, firstName: "Tim", rank: "Colonel"};
  
@@ -31,15 +39,15 @@ export class OfficersComponent implements OnInit
       console.log(officers._embedded.officers);
     })
   }
+  getOfficer(id:number):void{
+    this.officerService.getOfficer(this.user.officerId)
+    .subscribe(officer => {
+      this.officer = officer;
+    })
+  }
   addOfficer(): void
   {
     let bob = {id:1, firstName:"BoB", rank:"Captain"};
     this.officerService.addOfficer(bob).subscribe(json => console.log(json));
-  }
-
-  ngOnInit() {
-   //this.getOfficer();
-   //this.addOfficer();
-   this.getOfficers();
   }
 }

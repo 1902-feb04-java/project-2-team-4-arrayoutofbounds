@@ -17,7 +17,7 @@ export class OfficerService
   };
 
   getOfficer(id:number): Observable<Officer>{
-    const url = `${this.officerURL}/${id}`;
+    const url = `${this.officerURL}/search/findByOfficerId?officerId=${id}`;
     return this.http.get<Officer>(url);
   }
 

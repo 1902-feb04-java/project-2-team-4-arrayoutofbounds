@@ -1,20 +1,13 @@
-
-<h3>Inventory</h3>
-<ul>
-  <div *ngIf="inventory">
-
-  <div *ngFor="let invent of inventory">
-    <p> <b>Inventory ID#: </b>{{ invent.inventoryid }} <br>
-        <b>Location ID#: </b>{{ invent.locationId }} <br>
-        <b>Item #: </b>{{ myItem.itemId }} <br>
-        <b>Category: </b>{{ myItem.category }} <br>
-        <b>Class: </b>{{ myItem.classification }} <br>
-        <b>Model: </b>{{ myItem.model }} <br>
-        <b>Cost: $</b>{{ myItem.cost }} <br>
-        <b>Restricted: </b>{{ myItem.restricted }} <br>
-
-
-    </p>
-  </div>
+<div>
+  <h3>Inventory at location: {{location.name}}</h3>
+  <span>Items Details:</span>
+  <ul>
+    <li *ngFor ="let item of items">
+      <span>
+        Category: {{item.category}} <br> Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
+      </span>
+    </li>
+  </ul>
 </div>
-</ul>
+<app-back-button></app-back-button>
+<app-logout-button></app-logout-button>
