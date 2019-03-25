@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderHistoryComponent } from './OrderHIstory.component';
+import { OrderHistoryComponent } from './OrderHistory.component';
 
 describe('OrdersComponent', () => {
   let component: OrderHistoryComponent;
