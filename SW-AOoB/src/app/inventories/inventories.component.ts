@@ -8,6 +8,8 @@ import { Officer } from '../models/Officer';
 import { OfficersComponent } from '../officers/officers.component';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 
+
+
 @Component({
   selector: 'app-inventories',
   templateUrl: './inventories.component.html',
@@ -16,9 +18,13 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
 
 export class InventoriesComponent implements OnInit {
   currentUser:Officer;
-  inventory: Inventories;
-  items:Item[] //= [];
+  
   itemMap = new Map<number, number>();
+  inventory: Inventories[] = [];
+  myItem: Item;
+  itemId: number;
+  
+  items:Item[] = [];
 
   constructor(
     private inventoryService:InventoryService,
@@ -27,9 +33,8 @@ export class InventoriesComponent implements OnInit {
   
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('officer'))
-
-    console.log(this.currentUser);
-    // console.log(this.inventory);
+    //console.log(this.currentUser.locationId);
+    //console.log(this.inventory);
     // this.inventoryService.update.subscribe((obj => {
     //   this.addItems(obj);
     // }))
@@ -39,17 +44,36 @@ export class InventoriesComponent implements OnInit {
     //   items: {key: 1, a: 1}
     // }
     // this.addInventory(obj);
-    this.getInventory();
+
+    //this.getInventory();
+
+    // Retrieve Everything from inventories EBS
+    this.inventoryService.getInventories().subscribe((invent) => {
+        this.inventory = invent._embedded.inventories;
+        this.parseDataIn();
+        console.log(this.inventory);
+
+        this.itemId = this.getItemId(this.inventory);
+        
+        //Retrieve Item information by Item ID
+        console.log("Id...")
+        console.log(this.itemId);
+        this.itemService.getItem(this.itemId).subscribe((item)=>{
+        this.myItem = item;
+        console.log(this.myItem);
+     })
+
+       
+    })
+     
+
   }
 
   getInventory(): void{
     this.inventoryService.getInventory(this.currentUser.locationId)
     .subscribe(inventory => {
-      this.inventory = inventory;
-      console.log(this.inventory);
-
-      this.items = this.parseData(this.inventory.items)
-
+      inventory = inventory;
+      console.log(inventory);
     })
   }
   addInventory(inv:any): void {
@@ -76,23 +100,21 @@ export class InventoriesComponent implements OnInit {
    console.log(items)
     return items;
 }
-  // getItems():Item[]{
-  //   let items:Item[] = [];
-  //   this.inventory.items.forEach((v,k,m)=>{
-  //     if(v>0)
-  //     {
-  //       this.itemService.getItem(k).subscribe((item) => {
-  //         let itemOnly = new Item(item)
-  //         items.push(itemOnly);
-  //         console.log(items)
-  //       })
-  //     }
-  //   })
-  //   return items;
-  // }
-
-  // addItems(items:any): void{
-  //   this.inventory.items.set(items.itemId,items.qty)
-  // }
+  // Isaac's parseData for inventory array...
+  parseDataIn(): void{
+    let data;
+    this.inventory.forEach(element => {
+      data = JSON.parse(element.items as unknown as string)
+      element.items = data;
+    });   
+}
+  getItemId(inventory:Inventories[]):number{
+    let id;
+    this.inventory.forEach(element =>{
+      id = element.items[0].itemId;
+      
+    })
+    return id;
+  }
  
 }
