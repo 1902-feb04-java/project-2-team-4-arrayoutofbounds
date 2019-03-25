@@ -1,20 +1,17 @@
-<p>
-  confirmation-page works!
-</p>
-
+<div class='confirmdiv'>
 <app-order-display [currentOrder] = "currentOrder" [itemMap] = "itemMap"></app-order-display>
 
 <!-- Select location to ship to -->
-<select style="width:120px; height: 40px" #selection>
+<select style="width:200px; height: 40px" #selection>
   <option *ngFor= "let loc of locations" [value] = "loc.locationId">
    {{loc.name}}
   </option>
 </select>
-<button (click)="selectLocation(selection.value)"> Select Location</button>
+<button class='locateButt' (click)="selectLocation(selection.value)"> Select Location</button>
 <br>
 <br>
 
-<button id="submitButt" style="display:none"  (click)="submitOrder()"> Submit Order</button>
+<button id="submitButt"  style="display:none" (click)="submitOrder()"> Submit Order</button>
 
-
+</div>
 <!-- Confirm and submit -->
