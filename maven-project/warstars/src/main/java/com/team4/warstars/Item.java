@@ -10,6 +10,8 @@ import javax.persistence.Table;
 @Table(name = "items")
 public class Item 
 {
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -22,6 +24,18 @@ public class Item
 	
 	public Item()
 	{}
+	
+	public Item(long id, long itemId, String category, String classification, String model, int cost,
+			boolean isRestricted) {
+		super();
+		this.id = id;
+		this.itemId = itemId;
+		this.category = category;
+		this.classification = classification;
+		this.model = model;
+		this.cost = cost;
+		this.isRestricted = isRestricted;
+	}
 	
 	public long getItemId() {
 		return itemId;

@@ -10,11 +10,20 @@ import javax.persistence.Table;
 @Table(name = "locations")
 public class Location 
 {
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private long locationId;
 	private String name;
+	
+	public Location(long id, long locationId, String name) {
+		super();
+		this.id = id;
+		this.locationId = locationId;
+		this.name = name;
+	}
 	
 	public long getId() {
 		return id;
