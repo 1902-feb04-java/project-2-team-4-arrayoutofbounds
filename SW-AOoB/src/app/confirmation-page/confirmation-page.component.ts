@@ -41,6 +41,7 @@ export class ConfirmationPageComponent implements OnInit {
       this.inventory = inv;
       this.link = inv._links.self['href'];
       console.log(this.link)
+      document.getElementById('submitButt').style.display = 'block'
       // this.updateInventoryItems();
     })
   }
