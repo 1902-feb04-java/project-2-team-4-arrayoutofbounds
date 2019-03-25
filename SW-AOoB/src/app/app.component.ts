@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SW-AOoB';
+  empireLogo = '../assets/empire-logo.png';
 }
