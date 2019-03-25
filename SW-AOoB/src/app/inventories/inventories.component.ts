@@ -4,6 +4,7 @@ import { Inventories } from '../models/Inventories';
 import { Item } from '../models/Item';
 import { ItemService } from '../services/item.service';
 import { Officer } from '../models/Officer';
+import { Locations } from '../models/Locations';
 
 @Component({
   selector: 'app-inventories',
@@ -17,7 +18,7 @@ export class InventoriesComponent implements OnInit {
   inventory: Inventories;  
   items:Item[] = [];
 
-  location:Location;
+  location:Locations;
   
   constructor(
     private inventoryService:InventoryService,
