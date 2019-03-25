@@ -105,7 +105,7 @@ export class OrderComponent implements OnInit {
       orderId:Math.round( Math.random() * 1000000)
     }
     localStorage.setItem('currentOrder', JSON.stringify(slimOrder))
-
+    this.newOrder();
       
   //   // this.orderService.currentOrder.next(this.currentOrder);
     
