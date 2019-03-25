@@ -46,29 +46,7 @@ export class OrderHistoryDetailComponent implements OnInit  {
       })
 
     }
-  /*
-  getOrderById(){
-    const orderId = +this.route.snapshot.paramMap.get('id');
-      console.log(orderId);
-      this.orderService.getOrderById(orderId)
-        .subscribe((order) => {
-          ITEM_DETAILS = order.itemsOrdered
-          this.parseData()
-         
-
-          ORDER_DETAILS[0] =order.orderId// <Order> (<unknown> order.orderId);
-          ORDER_DETAILS[1] = order.cost //<Order> (<unknown> order.cost);
-          ORDER_DETAILS[2] = order.authorizationRequired;//<Order> (<unknown> order.isAuthorized);
-          ORDER_DETAILS[3] = order.itemsOrdered//<Order> (<unknown> order.itemsOrdered);
-        })
-        console.log("order details:");
-        console.log(ORDER_DETAILS);
-        console.log("\nItems details");
-        console.log(ITEM_DETAILS);
-    
-  }
-  */
-
+ 
   //Back Button
   goBack(): void{
     this.location.back();
@@ -80,8 +58,8 @@ export class OrderHistoryDetailComponent implements OnInit  {
    for(let i =0; i< data.length; i++)
    {
     this.itemMap.set(data[i].itemId, data[i].qty)
-    this.itemService.getItem( data[i].itemId).subscribe(i => {
-    items.push(new Item(i));
+    this.itemService.getItem( data[i].itemId).subscribe(item => {
+    items.push(new Item(item));
     })    
    }
     return items;

@@ -1,6 +1,6 @@
 export class Location
 {
     id:number;
+    locationid:number;
     name:string;
-    membershipGroup:number //references another location.id
 }

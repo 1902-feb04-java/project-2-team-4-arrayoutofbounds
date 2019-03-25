@@ -1,4 +1,4 @@
-<h3 class='title'>Welcome officer: </h3>
+<span><h3 class='title'>Welcome officer: </h3> <h4>{{user.firstName}}</h4></span>
 <div class="grid-container">
     <div class="grid-item">
       <a routerLink="/officers"> Profile</a>
@@ -14,8 +14,5 @@
     </div>
     
 </div>
-<ul>
-    <li *ngFor="let user of homepage">
-      <span>{{user.firstName}}</span>
-    </li>
-  </ul>
+
+  <app-logout-button></app-logout-button>

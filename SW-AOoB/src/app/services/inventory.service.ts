@@ -21,7 +21,9 @@ export class InventoryService {
   private officersUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/officers';
   private locationUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/locations';
   private inventoryUrl = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/inventories';
-  private localUrl = 'http://localhost:5000/inventories';
+  private localUrl = 'http://localhost:5000/locations';
+  private localInvUrl = 'http://localhost:5000/invntories';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -35,6 +37,10 @@ export class InventoryService {
     const url =`${this.locationUrl}/search/findByLocationId?locationId=${locationId}`;
     return this.http.get<any>(url);
   }
+  getLocations(): Observable<any>{
+    // const url =`${this.locationUrl}`;
+    return this.http.get<any>(this.locationUrl);
+  }
 
   getInventory(inventoryid:number): Observable<any>{
     const url =`${this.inventoryUrl}/search/findByInventoryId?inventoryId=${inventoryid}`;
@@ -43,10 +49,11 @@ export class InventoryService {
 
   addInventory(inventory:any): Observable<Inventories>{
     return this.http.post<Inventories>(this.inventoryUrl,inventory,this.httpOptions)
-    // .pipe(
-    //   tap(_ => this.log(`Added to inventory #${this.inventories.id}`)),
-    //   catchError(this.handleError<any>(`addItemsToInventory`))
-    // );
+   
+  }
+  updateInventory(inventory:any, link:string): Observable<Inventories>{
+    return this.http.put<Inventories>(link,inventory,this.httpOptions)
+   
   }
   // private handleError<T> (operation = 'operation', result?: T){
   //   return (error: any): Observable<T> => {

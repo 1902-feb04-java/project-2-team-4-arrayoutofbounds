@@ -1,15 +1,12 @@
-<h3>Inventory</h3>
-<ul>
-  <li *ngFor="let inventory of inventories">
-    <span>inventory id: {{inventory.id}} items map: {{inventory.items}} location Id: {{inventory.locationId}}</span>
-  </li>
-</ul>
-
+<h3>Inventory at location: <!-- {{location.name}} --></h3>
+<span>Items Details:</span>
 <ul>
   <li *ngFor ="let item of items">
     <span>
-      {{item.model}} - {{itemMap.get(item.itemId)}}
+      Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
     </span>
 
   </li>
 </ul>
+<app-back-button></app-back-button>
+<app-logout-button></app-logout-button>

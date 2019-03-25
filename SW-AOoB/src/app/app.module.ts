@@ -20,6 +20,11 @@ import {MatCheckboxModule } from '@angular/material';
 import { HighInventoryComponent } from './high-inventory/high-inventory.component';
 import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
 import { OrderHistoryDetailComponent } from './order-history-detail/order-history-detail.component';
+import { LogoutButtonComponent } from './logout-button/logout-button.component';
+import { BackButtonComponent } from './back-button/back-button.component';
+import { OrderDisplayComponent } from './confirmation-page/order-display/order-display.component';
+import { BackService } from './services/back.service';
+import { LogoutService } from './services/logout.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,10 @@ import { OrderHistoryDetailComponent } from './order-history-detail/order-histor
     OrderHistoryComponent,
     HighInventoryComponent,
     ConfirmationPageComponent,
-    OrderHistoryDetailComponent
+    OrderHistoryDetailComponent,
+    LogoutButtonComponent,
+    BackButtonComponent,
+    OrderDisplayComponent
 
   ],
   imports: [
@@ -50,7 +58,9 @@ import { OrderHistoryDetailComponent } from './order-history-detail/order-histor
     MatFormFieldModule
   ],
   providers: [
-    OrderService
+    OrderService,
+    BackService,
+    LogoutService
   ],
   bootstrap: [AppComponent]
 })

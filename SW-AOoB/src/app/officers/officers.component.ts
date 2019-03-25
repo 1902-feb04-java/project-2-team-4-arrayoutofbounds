@@ -42,5 +42,4 @@ export class OfficersComponent implements OnInit
    //this.addOfficer();
    this.getOfficers();
   }
-
 }
