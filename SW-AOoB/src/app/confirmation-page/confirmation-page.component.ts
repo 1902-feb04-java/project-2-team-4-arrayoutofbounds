@@ -78,20 +78,8 @@ export class ConfirmationPageComponent implements OnInit {
           console.log('add item')
           invItems.push({itemId: ord.itemId, qty: parseInt(ord.qty)})
         }
-        // console.log(invItems.length)
-        // console.log(`item: ${ord.itemId}, qty: ${ord.qty}`)
-        // if(ord.itemId == inv.itemId)
-        // {
-        //   inv.qty += parseInt(ord.qty);
-        //   console.log('add qty')
-        // }else {
-         
-        //   items.push({itemId: ord.itemId, qty: parseInt(ord.qty)})
-        //   console.log('add item')
-
-        // }
+        
       })
-    // })
     items.forEach(i => invItems.push(i))
     return invItems;
   }

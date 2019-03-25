@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "locations")
-public class Location 
+public class Locations 
 {
 	
 	
@@ -18,7 +18,10 @@ public class Location
 	private long locationId;
 	private String name;
 	
-	public Location(long id, long locationId, String name) {
+	public Locations()
+	{}
+	
+	public Locations(long id, long locationId, String name) {
 		super();
 		this.id = id;
 		this.locationId = locationId;

@@ -111,7 +111,7 @@ public class ItemAndLocationTest {
 	private long locateLocationId = 800;
 	private String locateName = "Nebula";
 	
-	Location myLocation = new Location(locateId, locateLocationId, locateName);
+	Locations myLocation = new Locations(locateId, locateLocationId, locateName);
 	
 	@Test
 	public void verifyLocationInfo() {

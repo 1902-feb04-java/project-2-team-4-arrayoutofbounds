@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
 @RepositoryRestResource(collectionResourceRel="locations", path="locations")
-public interface LocationRepo extends CrudRepository<Location, Long>
+public interface LocationRepo extends CrudRepository<Locations, Long>
 {
-	Location findByLocationId(@Param("locationId") long l);
+	Locations findByLocationId(@Param("locationId") long l);
 }
