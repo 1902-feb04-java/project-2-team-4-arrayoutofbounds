@@ -1,3 +1,46 @@
-<p>
-  You are a boss!
-</p>
+<div>
+  <h3>Inventory at location: {{locationOne.name}}</h3>
+  <span>Items Details:</span>
+  <ul>
+    <li *ngFor ="let item of itemsOne">
+      <span>
+        Category: {{item.category}} <br> Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
+      </span>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3>Inventory at location: {{locationTwo.name}}</h3>
+  <span>Items Details:</span>
+  <ul>
+    <li *ngFor ="let item of itemsTwo">
+      <span>
+        Category: {{item.category}} <br> Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
+      </span>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3>Inventory at location: {{locationThree.name}}</h3>
+  <span>Items Details:</span>
+  <ul>
+    <li *ngFor ="let item of itemsThree">
+      <span>
+        Category: {{item.category}} <br> Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
+      </span>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3>Inventory at location: {{locationFour.name}}</h3>
+  <span>Items Details:</span>
+  <ul>
+    <li *ngFor ="let item of itemsFour">
+      <span>
+        Category: {{item.category}} <br> Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
+      </span>
+    </li>
+  </ul>
+</div>
+<app-back-button></app-back-button>
+<app-logout-button></app-logout-button>
