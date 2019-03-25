@@ -2,11 +2,11 @@
   confirmation-page works!
 </p>
 
-<!-- <app-order> </app-order> -->
+<app-order-display [currentOrder] = "currentOrder" [itemMap] = "itemMap"></app-order-display>
 
 <!-- Select location to ship to -->
-<button (click)="selectLocation(1)"> Select Location</button>)
-<button (click)="submitOrder()"> Submit Order</button>)
+<button (click)="selectLocation(1)"> Select Location</button>
+<button (click)="submitOrder()"> Submit Order</button>
 
 
 <!-- Confirm and submit -->

@@ -22,6 +22,7 @@ import { ConfirmationPageComponent } from './confirmation-page/confirmation-page
 import { OrderHistoryDetailComponent } from './order-history-detail/order-history-detail.component';
 import { LogoutButtonComponent } from './logout-button/logout-button.component';
 import { BackButtonComponent } from './back-button/back-button.component';
+import { OrderDisplayComponent } from './confirmation-page/order-display/order-display.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BackButtonComponent } from './back-button/back-button.component';
     ConfirmationPageComponent,
     OrderHistoryDetailComponent,
     LogoutButtonComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    OrderDisplayComponent
 
   ],
   imports: [
