@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Officer } from '../models/Officer';
 import {OfficerService} from '../services/officer.service';
-import { LogoutService} from '../services/logout.service';
-import { BackService } from '../services/back.service';
 
 @Component({
   selector: 'app-officers',
@@ -11,7 +9,7 @@ import { BackService } from '../services/back.service';
 })
 export class OfficersComponent implements OnInit 
 {
-  constructor(private officerService:OfficerService,private logoutService:LogoutService,private backService:BackService) { }
+  constructor(private officerService:OfficerService) { }
   officers: Officer[];
   // loc:Location = {id:1, name: "Valley of Bones", membershipGroup: 1}
   //currentOfficer: Officer = {id: 1, firstName: "Tim", rank: "Colonel"};
@@ -43,11 +41,5 @@ export class OfficersComponent implements OnInit
    //this.getOfficer();
    //this.addOfficer();
    this.getOfficers();
-  }
-  logout():void {
-    this.logoutService.logout();
-  }
-  back():void{
-    this.backService.homepageBack();
   }
 }

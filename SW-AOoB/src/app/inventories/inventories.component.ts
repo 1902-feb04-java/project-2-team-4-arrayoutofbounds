@@ -7,8 +7,6 @@ import { OfficerService } from '../services/officer.service';
 import { Officer } from '../models/Officer';
 import { OfficersComponent } from '../officers/officers.component';
 import { invalid } from '@angular/compiler/src/render3/view/util';
-import { LogoutService} from '../services/logout.service';
-import { BackService } from '../services/back.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,35 +21,19 @@ export class InventoriesComponent implements OnInit {
   items:Item[] //= [];
   itemMap = new Map<number, number>();
   location:Location;
+  
   constructor(
     private inventoryService:InventoryService,
-    private itemService:ItemService,
-    private logoutService:LogoutService,
-    private backService:BackService,
-    public router:Router
+    private itemService:ItemService
   ) { }
   
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('officer'))
-    if (this.currentUser.rank == 'Emperor'){
-      this.router.navigate(['/high-inventory']);
-    }
     console.log(this.currentUser);
     console.log(this.currentUser.locationId);
-    // console.log(this.inventory);
-    // this.inventoryService.update.subscribe((obj => {
-    //   this.addItems(obj);
-    // }))
-    // let obj = {
-    //   id:1,
-    //   locationId:1,
-    //   items: {key: 1, a: 1}
-    // }
-    // this.addInventory(obj);
     this.getLocation();
     this.getInventory();
   }
-
   getInventory(): void{
     this.inventoryService.getInventory(this.currentUser.locationId)
     .subscribe(inventory => {
@@ -60,21 +42,6 @@ export class InventoriesComponent implements OnInit {
 
     })
   }
-  // getItems(id:number):void{
-  //   console.log(this.inventory.items.get(id));
-  // }
-  // addInventory(): void {
-  //   let newInv: Inventories = {
-  //     id:this.inventory.id,
-  //     inventoryid:this.inventory.inventoryid,
-  //     locationId: this.inventory.locationId,
-  //     items: this.inventory.items + this.itemMap.set();
-  //   } 
-  //   this.inventoryService.addInventory(newInv).subscribe(() =>{
-  //     // console.log(inv)
-  //   })
-  // }
-
   getLocation():void{
     this.inventoryService.getLocation(this.currentUser.locationId)
     .subscribe(location => {
@@ -100,17 +67,5 @@ export class InventoriesComponent implements OnInit {
    }
   //  console.log(items)
     return items;
-}
-
-  // addItems(items:any): void{
-  //   this.inventory.items.set(items.itemId,items.qty)
-  // }
-
-  logout():void {
-    this.logoutService.logout();
-  }
-  back():void{
-    this.backService.homepageBack();
-  }
- 
+  } 
 }
