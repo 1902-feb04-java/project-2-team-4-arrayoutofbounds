@@ -4,6 +4,7 @@ import { Inventories } from '../models/Inventories';
 import { Item } from '../models/Item';
 import { ItemService } from '../services/item.service';
 import { Officer } from '../models/Officer';
+import { Locations } from '../models/Locations';
 
 @Component({
   selector: 'app-high-inventory',
@@ -26,10 +27,10 @@ export class HighInventoryComponent implements OnInit {
   itemMapThree = new Map<number, number>();
   itemMapFour = new Map<number, number>();
 
-  locationOne:Location;
-  locationTwo:Location;
-  locationThree:Location;
-  locationFour:Location;
+  locationOne:Locations;
+  locationTwo:Locations;
+  locationThree:Locations;
+  locationFour:Locations;
   
   constructor(
     private inventoryService:InventoryService,
