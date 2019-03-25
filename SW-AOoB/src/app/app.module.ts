@@ -23,6 +23,8 @@ import { OrderHistoryDetailComponent } from './order-history-detail/order-histor
 import { LogoutButtonComponent } from './logout-button/logout-button.component';
 import { BackButtonComponent } from './back-button/back-button.component';
 import { OrderDisplayComponent } from './confirmation-page/order-display/order-display.component';
+import { BackService } from './services/back.service';
+import { LogoutService } from './services/logout.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { OrderDisplayComponent } from './confirmation-page/order-display/order-d
     MatFormFieldModule
   ],
   providers: [
-    OrderService
+    OrderService,
+    BackService,
+    LogoutService
   ],
   bootstrap: [AppComponent]
 })
