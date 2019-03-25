@@ -5,7 +5,15 @@
 <app-order-display [currentOrder] = "currentOrder" [itemMap] = "itemMap"></app-order-display>
 
 <!-- Select location to ship to -->
-<button (click)="selectLocation(1)"> Select Location</button>
+<select style="width:120px; height: 40px" #selection>
+  <option *ngFor= "let loc of locations" [value] = "loc.locationId">
+   {{loc.name}}
+  </option>
+</select>
+<button (click)="selectLocation(selection.value)"> Select Location</button>
+<br>
+<br>
+
 <button (click)="submitOrder()"> Submit Order</button>
 
 

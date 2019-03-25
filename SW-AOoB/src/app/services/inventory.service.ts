@@ -37,6 +37,10 @@ export class InventoryService {
     const url =`${this.locationUrl}/search/findByLocationId?locationId=${locationId}`;
     return this.http.get<any>(url);
   }
+  getLocations(): Observable<any[]>{
+    // const url =`${this.locationUrl}`;
+    return this.http.get<any>(this.locationUrl);
+  }
 
   getInventory(inventoryid:number): Observable<any>{
     const url =`${this.inventoryUrl}/search/findByInventoryId?inventoryId=${inventoryid}`;

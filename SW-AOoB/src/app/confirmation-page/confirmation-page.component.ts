@@ -16,17 +16,23 @@ export class ConfirmationPageComponent implements OnInit {
   constructor(
     private orderService:OrderService, 
     private itemService:ItemService,
-    private inventoryService: InventoryService
+    private inventoryService: InventoryService,
     ) { }
   inventory:Inventories;
   itemsOrderedIds:string;
   currentOrder:Order;
   itemMap = new Map<number, number>();
   link:string;
+  locations:any[];
   ngOnInit() {
     this.currentOrder = <Order>JSON.parse(localStorage.getItem('currentOrder'));
     this.itemsOrderedIds = this.currentOrder.itemsOrdered as unknown as string;
     this.currentOrder.itemsOrdered = this.parseItems(this.currentOrder.itemsOrdered)
+    this.inventoryService.getLocations()
+      .subscribe(locs => {
+        console.log(locs)
+        this.locations = locs._embedded.locations;
+      })
   }
 
   selectLocation(id:number): void
