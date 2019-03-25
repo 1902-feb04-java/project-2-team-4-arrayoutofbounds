@@ -1,10 +1,15 @@
-*, h3, ul, li{
-    color: black;
+ul, li{
+    color: white;
+}
+h2{
+    color: rgb(221, 220, 220)
 }
 .officerdiv
 {
+    /* color: white; */
     position: absolute;
-    left: 35%;
-    width: 500px;
-    background-color: #616161; 
+    /* left: 5%; */
+    width: 350px;
+    
+    background-color: #6161619a; 
 }
