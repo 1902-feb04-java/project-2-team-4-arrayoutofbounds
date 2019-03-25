@@ -51,12 +51,55 @@ export class HighInventoryComponent implements OnInit {
     .subscribe(inventory => {
       this.inventoryOne = inventory;
       this.itemsOne = this.parseDataOne(this.inventoryOne.items)
+      console.log(this.itemsOne);
+    })
+  }
+  getInventoryTwo(): void{
+    this.inventoryService.getInventory(2)
+    .subscribe(inventory => {
+      this.inventoryTwo = inventory;
+      this.itemsTwo = this.parseDataTwo(this.inventoryTwo.items)
+      console.log(this.itemsTwo);
+    })
+  }
+  getInventoryThree(): void{
+    this.inventoryService.getInventory(3)
+    .subscribe(inventory => {
+      this.inventoryThree = inventory;
+      this.itemsThree = this.parseDataThree(this.inventoryThree.items)
+      console.log(this.itemsThree);
+    })
+  }
+  getInventoryFour(): void{
+    this.inventoryService.getInventory(4)
+    .subscribe(inventory => {
+      this.inventoryFour = inventory;
+      this.itemsFour = this.parseDataFour(this.inventoryFour.items)
+      console.log(this.itemsFour);
     })
   }
   getLocationOne():void{
     this.inventoryService.getLocation(1)
     .subscribe(location => {
       this.locationOne = location;
+    })
+  }
+  getLocationTwo():void{
+    this.inventoryService.getLocation(2)
+    .subscribe(location => {
+      this.locationTwo = location;
+    })
+  }
+  getLocationThree():void{
+    this.inventoryService.getLocation(3)
+    .subscribe(location => {
+      this.locationThree = location;
+    })
+  }
+  getLocationFour():void{
+    this.inventoryService.getLocation(4)
+    .subscribe(location => {
+      this.locationFour = location;
     })
   }
   parseDataOne(ITEM_DETAILS): Item[]{
@@ -71,19 +114,6 @@ export class HighInventoryComponent implements OnInit {
    }
     return items;
   }
-  getInventoryTwo(): void{
-    this.inventoryService.getInventory(2)
-    .subscribe(inventory => {
-      this.inventoryTwo = inventory;
-      this.itemsTwo = this.parseDataOne(this.inventoryTwo.items)
-    })
-  }
-  getLocationTwo():void{
-    this.inventoryService.getLocation(2)
-    .subscribe(location => {
-      this.locationTwo = location;
-    })
-  }
   parseDataTwo(ITEM_DETAILS): Item[]{
     let items = [];
     let data = JSON.parse(ITEM_DETAILS);
@@ -96,19 +126,6 @@ export class HighInventoryComponent implements OnInit {
    }
     return items;
   }
-  getInventoryThree(): void{
-    this.inventoryService.getInventory(3)
-    .subscribe(inventory => {
-      this.inventoryThree = inventory;
-      this.itemsThree = this.parseDataOne(this.inventoryThree.items)
-    })
-  }
-  getLocationThree():void{
-    this.inventoryService.getLocation(3)
-    .subscribe(location => {
-      this.locationThree = location;
-    })
-  }
   parseDataThree(ITEM_DETAILS): Item[]{
     let items = [];
     let data = JSON.parse(ITEM_DETAILS);
@@ -120,19 +137,6 @@ export class HighInventoryComponent implements OnInit {
     })    
    }
     return items;
-  }
-  getInventoryFour(): void{
-    this.inventoryService.getInventory(4)
-    .subscribe(inventory => {
-      this.inventoryFour = inventory;
-      this.itemsOne = this.parseDataOne(this.inventoryFour.items)
-    })
-  }
-  getLocationFour():void{
-    this.inventoryService.getLocation(4)
-    .subscribe(location => {
-      this.locationFour = location;
-    })
   }
   parseDataFour(ITEM_DETAILS): Item[]{
     let items = [];

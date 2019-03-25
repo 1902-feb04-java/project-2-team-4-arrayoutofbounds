@@ -1,46 +1,48 @@
-<div>
-  <h3>Inventory at location: {{locationOne.name}}</h3>
-  <span>Items Details:</span>
-  <ul>
-    <li *ngFor ="let item of itemsOne">
-      <span>
-        Category: {{item.category}} <br> Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
-      </span>
-    </li>
-  </ul>
+<div class='invdiv'>
+  <div>
+    <h3>Inventory at location: {{locationOne.name}}</h3>
+    <span>Items Details:</span>
+    <ul>
+      <li *ngFor ="let itemOne of itemsOne">
+        <span>
+          Category: {{itemOne.category}} <br> Model: {{itemOne.model}} <br> Calssification: {{itemOne.classification}} <br> Quantity: {{itemMapOne.get(itemOne.itemId)}}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>Inventory at location: {{locationTwo.name}}</h3>
+    <span>Items Details:</span>
+    <ul>
+      <li *ngFor ="let itemTwo of itemsTwo">
+        <span>
+          Category: {{itemTwo.category}} <br> Model: {{itemTwo.model}} <br> Calssification: {{itemTwo.classification}} <br> Quantity: {{itemMapTwo.get(itemTwo.itemId)}}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>Inventory at location: {{locationThree.name}}</h3>
+    <span>Items Details:</span>
+    <ul>
+      <li *ngFor ="let itemThree of itemsThree">
+        <span>
+          Category: {{itemThree.category}} <br> Model: {{itemThree.model}} <br> Calssification: {{itemThree.classification}} <br> Quantity: {{itemMapThree.get(itemThree.itemId)}}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>Inventory at location: {{locationFour.name}}</h3>
+    <span>Items Details:</span>
+    <ul>
+      <li *ngFor ="let itemFour of itemsFour">
+        <span>
+          Category: {{itemFour.category}} <br> Model: {{itemFour.model}} <br> Calssification: {{itemFour.classification}} <br> Quantity: {{itemMapFour.get(itemFour.itemId)}}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <app-back-button></app-back-button>
+  <app-logout-button></app-logout-button>
 </div>
-<div>
-  <h3>Inventory at location: {{locationTwo.name}}</h3>
-  <span>Items Details:</span>
-  <ul>
-    <li *ngFor ="let item of itemsTwo">
-      <span>
-        Category: {{item.category}} <br> Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
-      </span>
-    </li>
-  </ul>
-</div>
-<div>
-  <h3>Inventory at location: {{locationThree.name}}</h3>
-  <span>Items Details:</span>
-  <ul>
-    <li *ngFor ="let item of itemsThree">
-      <span>
-        Category: {{item.category}} <br> Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
-      </span>
-    </li>
-  </ul>
-</div>
-<div>
-  <h3>Inventory at location: {{locationFour.name}}</h3>
-  <span>Items Details:</span>
-  <ul>
-    <li *ngFor ="let item of itemsFour">
-      <span>
-        Category: {{item.category}} <br> Model: {{item.model}} <br> Calssification: {{item.classification}} <br> Quantity: {{itemMap.get(item.itemId)}}
-      </span>
-    </li>
-  </ul>
-</div>
-<app-back-button></app-back-button>
-<app-logout-button></app-logout-button>

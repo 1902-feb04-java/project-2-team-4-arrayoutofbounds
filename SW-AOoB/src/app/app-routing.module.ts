@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'orderhistory', component: OrderHistoryComponent},
   {path:'confirmation', component: ConfirmationPageComponent},
   {path: 'detail/:id', component: OrderHistoryDetailComponent},
-  {path:'high-invntory', component: HighInventoryComponent}
+  {path:'high-inventory', component: HighInventoryComponent}
 ];
 
 @NgModule({

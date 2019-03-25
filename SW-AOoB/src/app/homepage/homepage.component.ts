@@ -11,6 +11,9 @@ export class HomepageComponent implements OnInit {
   constructor() { }
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user)
+    console.log(this.user.rank)
+    if(this.user.rank == "Emperor"){
+      document.getElementById('high').style.display = 'block';
+    }
   }
 }
