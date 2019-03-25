@@ -6,7 +6,7 @@
    <b>Order #:</b> {{ currentOrder.orderId }} <br>
    <b>User #:</b> {{ currentOrder.userId }} <br>
    <b>Total :</b> ${{ currentOrder.cost }} <br>
-   <b>Authorized:</b> {{ currentOrder.authorizationRequired }} <br>
+   <b>Restricted Items:</b> {{ currentOrder.authorizationRequired }} <br>
 </p>
 <!-- <div *ngIf="{{currentOrder.authorizationRequired}}; else elseBlock">Authorized: Yes <br></div>
 <ng-template #elseBlock>Authorized: No <br></ng-template> -->

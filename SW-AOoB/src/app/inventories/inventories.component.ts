@@ -7,6 +7,7 @@ import { OfficerService } from '../services/officer.service';
 import { Officer } from '../models/Officer';
 import { OfficersComponent } from '../officers/officers.component';
 import { invalid } from '@angular/compiler/src/render3/view/util';
+import { Router } from '@angular/router';
 
 
 
@@ -26,6 +27,8 @@ export class InventoriesComponent implements OnInit {
   
   items:Item[] = [];
 
+  location:Location;
+  
   constructor(
     private inventoryService:InventoryService,
     private itemService:ItemService
@@ -67,18 +70,24 @@ export class InventoriesComponent implements OnInit {
     })
      
 
+    console.log(this.currentUser);
+    console.log(this.currentUser.locationId);
+    this.getLocation();
+    this.getInventory();
   }
-
   getInventory(): void{
     this.inventoryService.getInventory(this.currentUser.locationId)
     .subscribe(inventory => {
-      inventory = inventory;
-      console.log(inventory);
+      this.inventory = inventory;
+      this.items = this.parseData(this.inventory)
+
     })
   }
-  addInventory(inv:any): void {
-    this.inventoryService.addInventory(inv).subscribe(() =>{
-      console.log(inv)
+  getLocation():void{
+    this.inventoryService.getLocation(this.currentUser.locationId)
+    .subscribe(location => {
+      this.location = location;
+      // console.log(location);
     })
   }
 
@@ -86,18 +95,18 @@ export class InventoriesComponent implements OnInit {
     let items = [];
     // console.log(ITEM_DETAILS)
     let data = JSON.parse(ITEM_DETAILS);
-    console.log(data)
+    // console.log(data)
 
 
    for(let i =0; i< data.length; i++)
    {
     this.itemMap.set(data[i].itemId, data[i].qty)
     this.itemService.getItem( data[i].itemId).subscribe(i => {
-      console.log(i)
+      // console.log(i)
       items.push(new Item(i));
     })    
    }
-   console.log(items)
+  //  console.log(items)
     return items;
 }
   // Isaac's parseData for inventory array...

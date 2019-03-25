@@ -6,7 +6,6 @@ import { MatTableDataSource } from '@angular/material';
 import { Item } from '../models/Item'
 import { OrderService } from '../services/order.service';
 
-
 let ORDER_DATA: Order[] = [
 //   {id: 1,  user: 1000, itemsOrdered: [{ id: 1, category: "Weapon", classification:"", model:"x", cost:50 }],
 //     isAuthorized: true, date:null, cost:100 },

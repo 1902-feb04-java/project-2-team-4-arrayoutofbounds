@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   ) {}
   
   ngOnInit() {
+    console.log(localStorage.getItem('officer'))
   }
   user: Officer;
 
@@ -30,6 +31,8 @@ export class LoginComponent implements OnInit {
         console.log(user)
         this.user = user;
         localStorage.setItem('officer', JSON.stringify(user))
+        localStorage.setItem('user', JSON.stringify(user))
+
         this.router.navigate(['/home']);
       }else{
         // console.log(document.getElementById('message') != null)

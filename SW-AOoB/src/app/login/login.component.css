@@ -1,0 +1,49 @@
+body{
+    background-color: black;
+}
+.login
+{
+    position: absolute;
+    left: 43%;
+    top: 40%;
+    width: 300px;
+    color: black;
+    background-color: #E0E0E0;
+}
+.title
+{
+    text-align: center;
+}
+.un
+{
+    text-align: center;
+    width: 296px;
+    height: 40px;
+    font-size: 20pt;
+
+}
+.pass
+{
+    text-align: center;
+    width: 296px;
+    height: 40px;
+    font-size: 20pt;
+}
+::placeholder
+{
+    text-align: center;
+    color: black;
+    text-align: center;
+    text-decoration-color: black;
+    align-content: center;
+}
+.button
+{
+    text-align: center;
+    width: 300px;
+    height: 40px;
+    color: white;
+    background-color: black;
+    border-color: white ;
+    
+}

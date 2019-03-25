@@ -13,7 +13,7 @@ public class Location
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-//	private long locationId;
+	private long locationId;
 	private String name;
 	
 	public long getId() {
@@ -28,10 +28,10 @@ public class Location
 	public void setName(String name) {
 		this.name = name;
 	}
-//	public long getLocationId() {
-//		return locationId;
-//	}
-//	public void setLocationId(long locationId) {
-//		this.locationId = locationId;
-//	}
+	public long getLocationId() {
+		return locationId;
+	}
+	public void setLocationId(long locationId) {
+		this.locationId = locationId;
+	}
 }

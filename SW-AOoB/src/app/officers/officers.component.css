@@ -1,3 +1,12 @@
+<<<<<<< HEAD
 *, h3, ul, li{
     color: black;
+=======
+.officerdiv
+{
+    position: absolute;
+    left: 35%;
+    width: 500px;
+    background-color: #616161; 
+>>>>>>> 0d005618429ac570128aa020c24ced6de193e3ed
 }

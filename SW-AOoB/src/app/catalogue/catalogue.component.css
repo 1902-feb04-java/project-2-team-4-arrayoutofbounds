@@ -1,9 +1,12 @@
-
+body {
+    background-color: #EEEEEE;
+}
 #tabs{
     position:absolute;
     width: 800px;
     left: 10%;
-    background-color: black;
+    background-color:#616161;
+    color: white;
 }
 
 #quanBox{
@@ -12,7 +15,7 @@
 .mat-table {
     flex: 0 0 100px !important;
     white-space: unset !important;
-  }
+}
 .make_red{
     background-color: rgba(255, 0, 0, 0.712);
 }
@@ -21,7 +24,7 @@
     left: 68%;
     height: 80%;
     width: 400px;
-    background-color: rgb(54, 53, 53); 
+    background-color: #424242; 
     /* background-color: blue; */
     position: fixed;
     /* color: blanchedalmond; */
