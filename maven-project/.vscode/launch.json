@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-WarstarsApplication<warstars>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.team4.warstars.WarstarsApplication",
+            "projectName": "warstars",
+            "args": ""
+        }
+    ]
+}

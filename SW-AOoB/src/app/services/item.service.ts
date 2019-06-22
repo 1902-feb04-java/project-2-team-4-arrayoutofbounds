@@ -9,7 +9,6 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 })
 export class ItemService {
 
-
   constructor(private http: HttpClient) { }
   private itemsURL = 'http://swirl-env.4jnneajyag.us-east-2.elasticbeanstalk.com/items';
   private localItemsURL = 'http://localhost:5000/items';

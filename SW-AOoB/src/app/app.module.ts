@@ -25,6 +25,7 @@ import { BackButtonComponent } from './back-button/back-button.component';
 import { OrderDisplayComponent } from './confirmation-page/order-display/order-display.component';
 import { BackService } from './services/back.service';
 import { LogoutService } from './services/logout.service';
+import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 
 @NgModule({
   declarations: [
@@ -55,12 +56,14 @@ import { LogoutService } from './services/logout.service';
     BrowserAnimationsModule,
     MatTableModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    AmplifyAngularModule
   ],
   providers: [
     OrderService,
     BackService,
-    LogoutService
+    LogoutService,
+    AmplifyService
   ],
   bootstrap: [AppComponent]
 })
